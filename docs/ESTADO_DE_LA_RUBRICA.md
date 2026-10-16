@@ -1,20 +1,15 @@
-# Estado verificable de la entrega
+# Estado de la entrega
 
-Esta tabla distingue implementación de evidencia. No estima una calificación ni presenta pruebas simuladas como llamadas reales.
-
-| Criterio | Implementado | Evidencia o paso pendiente |
+| Requisito | Avance | Qué falta |
 | --- | --- | --- |
-| LLM e integración, 25 % | Gemini REST, interfaces de escritorio y web, contexto acotado, manejo de errores y respuesta estructurada. | Configurar una clave y verificar una respuesta real del proveedor. Los contratos HTTP se probaron con respuestas simuladas. |
-| Conocimiento y prompting, 20 % | 32 artículos, 6 fuentes, SQLite en escritorio, RAG léxico, system prompt, few-shot, dominio y referencias validadas. | Evaluar exactitud con preguntas reales al modelo; la validación de referencias no demuestra ausencia de alucinaciones. |
-| Cloud y GitHub, 15 % | Código preparado para alojamiento web y publicación; fuentes sin claves ni datos biométricos. | Permitir acceso al docente al sitio publicado y publicar el repositorio en GitHub. El enlace de alojamiento se confirma al finalizar la entrega. El acceso inicial del sitio es privado. |
-| Declaración ES/EN, 20 % | Reflexión crítica en ambos idiomas en README e interfaz. Relación con decisiones reales de diseño. | Revisar el texto y adaptarlo a tu manera de explicarlo. |
-| Video en inglés, 20 % | Guion y secuencia de demostración para menos de cinco minutos. | Grabar tu sustentación y adjuntar el enlace del video. |
+| Integración con un LLM, 25 % | Gemini funciona en Windows y responde desde la interfaz de PicMe. | Configurarlo y comprobarlo también en el alojamiento web. |
+| Base de conocimiento y prompting, 20 % | Hay 33 artículos, seis fuentes, recuperación de contexto y un system prompt con ejemplos y límites de dominio. | Continuar revisando las respuestas con sus fuentes. |
+| GitHub y despliegue, 15 % | El código está en un repositorio público. Existe un despliegue web privado. | Habilitar el acceso al sitio para la evaluación y comprobar su funcionamiento con Gemini. |
+| Reflexión en español e inglés, 20 % | Las dos respuestas están en el README y la interfaz web. | Revisarlas antes de la sustentación para poder explicar su relación con el diseño. |
+| Video en inglés, 20 % | Se cuenta con un guion de apoyo y una secuencia para la demostración. | Grabar un video de máximo cinco minutos y adjuntar su enlace. |
 
-## Qué se comprobó
+Repositorio: https://github.com/yijan05/picme-asistente-medit
 
-- Las pruebas de la base y del contrato de Gemini usan datos controlados y proveedores simulados.
-- La integración distingue `llmUsed: true` / `llm_usado: true` de la consulta local y del respaldo.
-- La clave no está configurada en el entorno de construcción. No se realizó una llamada real autenticada a Gemini durante esta preparación.
-- El paquete original contenía datos y plantillas biométricas de prueba. Se excluyen de la fuente preparada para publicar; el programa puede crear una base nueva y registrar usuarios localmente.
+La demostración puede mostrar PicMe ejecutándose en el PC. Según la guía, también se debe entregar un enlace funcional a la aplicación desplegada en la nube.
 
-Los resultados concretos de pruebas y publicación se registran en `VERIFICACION.md`.
+La asistencia a la sesión presencial se evalúa por separado, de acuerdo con la nota incluida por el profesor.

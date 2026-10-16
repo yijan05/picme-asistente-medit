@@ -1,158 +1,140 @@
-# PicMe — Asistente educativo con Gemini y RAG
+# PicMe
 
-**Universidad de Cundinamarca · Seccional Ubaté**  
-**CADI:** Introducción a Machine Learning  
-**Entrega individual:** Evelin Yijan Virguez Parra
+Universidad de Cundinamarca, seccional Ubaté  
+Ingeniería de Sistemas y Computación  
+CADI: Introducción a Machine Learning  
+Evelin Yijan Virguez Parra
 
-PicMe incorpora un asistente que explica el MEDIT y la Declaración Persona Transhumana mediante conocimiento documentado y una integración con Gemini. El programa de escritorio conserva el reconocimiento facial; la web permite consultar el conocimiento y la reflexión sin acceder a registros biométricos.
+PicMe es un proyecto de control de ingreso mediante reconocimiento facial. Para esta actividad se integró un chatbot que responde preguntas sobre la Universidad de Cundinamarca, el MEDIT y los doce principios de la Declaración Persona Transhumana.
 
-**Sitio del proyecto, con acceso inicial privado:** <https://picme-ucundinamarca-medit-yijan.majoremu64.chatgpt.site>
+El chatbot se puede abrir desde PicMe o de forma independiente. También existe una versión web para consultar los contenidos educativos. Los registros de estudiantes se manejan en la aplicación de escritorio.
 
-**Pendientes de la entrega evaluable:** configurar y verificar la clave real del LLM, publicar el repositorio público, dar acceso al docente al sitio y grabar el video en inglés. No se presenta una respuesta local ni una prueba simulada como una llamada real a Gemini.
+Repositorio: https://github.com/yijan05/picme-asistente-medit
 
-## Inicio en Windows
+## Qué hace el chatbot
 
-1. Extrae todo el ZIP.
-2. Entra en `desktop` y abre `INSTALAR_WINDOWS.bat` con Python 3.10, 3.11 o 3.12 de 64 bits. La instalación necesita Internet; si falta el modelo facial, lo descarga.
-3. Abre `CONFIGURAR_GEMINI.bat`, completa `GEMINI_API_KEY` en el archivo `.env` que se abre y guarda.
-4. Ejecuta `VERIFICAR_LLM.bat`: debe confirmar una respuesta real del proveedor.
-5. Abre `INICIAR_PICME.bat` o `SOLO_CHATBOT.bat`.
+- Explica el MEDIT y los principios de la declaración con ejemplos.
+- Consulta una base de conocimiento con 33 artículos y seis fuentes institucionales.
+- Usa Gemini para redactar la respuesta a partir de los documentos recuperados.
+- Muestra la fuente de la información y señala si respondió Gemini o la consulta local.
+- Conserva un historial breve para entender preguntas de seguimiento.
 
-Sin clave, el chat funciona en **modo local**, identificado en la interfaz. Para forzar ese modo aunque exista una clave, usa `PICME_CHAT_MODE=local`.
+Por ejemplo, se puede preguntar «Explícame el principio 6», «¿Cuáles son los ejes del MEDIT?» o «¿Cómo sé si soy una persona transhumana?». En esta última pregunta propone una reflexión sobre las acciones cotidianas, sin decidir la identidad de quien consulta.
 
-La fuente publicable crea una base nueva: no contiene datos de usuarios ni plantillas biométricas del archivo original. El conocimiento educativo se reconstruye desde el JSON. El paquete anterior conserva los registros originales si necesitas mantenerlos en tu PC.
+## Cómo ejecutarlo en Windows
 
-## Versión web
+Se necesita Python 3.10, 3.11 o 3.12 de 64 bits. La instalación requiere conexión a Internet.
 
-La web usa React, TypeScript y Vinext, con un endpoint servidor que llama a Gemini. Se despliega en Cloudflare Workers mediante Sites. La clave se configura como secreto del servidor; no se incluye en el navegador.
+1. Abre la carpeta `desktop` y ejecuta `INSTALAR_WINDOWS.bat`.
+2. Ejecuta `CONFIGURAR_GEMINI.bat`. Guarda tu clave en el archivo `.env` y configura el modelo:
 
-Para desarrollo local se necesita Node.js 22.13 o posterior:
+   ```env
+   GEMINI_API_KEY=tu_clave_local
+   GEMINI_MODEL=gemini-3.5-flash-lite
+   PICME_CHAT_MODE=auto
+   ```
+
+3. Ejecuta `VERIFICAR_LLM.bat` para comprobar la conexión.
+4. Abre `INICIAR_PICME.bat` para entrar a PicMe o `SOLO_CHATBOT.bat` para abrir el asistente.
+
+Si el lanzador de Python falla, ejecuta el instalador desde PowerShell con la ruta de tu instalación. En el equipo usado para el proyecto se empleó:
+
+```powershell
+& "C:\Program Files\Python310\python.exe" .\instalar_windows.py
+```
+
+El archivo `.env` se conserva en el equipo y queda excluido de Git. Sin clave, el chatbot permite consultar la base local. Cuando falla Gemini, la interfaz indica que se está mostrando una respuesta de respaldo.
+
+## Cómo está organizado
+
+| Archivo o carpeta | Función |
+| --- | --- |
+| `desktop/app/chatbot/engine.py` | Busca el contenido relacionado con la pregunta y reconoce variantes de escritura. |
+| `desktop/app/chatbot/rag.py` | Selecciona los documentos y prepara el contexto de la conversación. |
+| `desktop/app/chatbot/llm.py` | Envía la solicitud a Gemini y revisa el formato de la respuesta. |
+| `desktop/conocimiento/base_conocimiento.json` | Contiene los artículos y sus fuentes. |
+| `desktop/conocimiento/system_prompt.txt` | Define el propósito, las reglas y los ejemplos del asistente. |
+| `desktop/app/db.py` | Maneja usuarios, plantillas e ingresos en SQLite. |
+| `app/page.tsx` y `app/api/chat/route.ts` | Interfaz y servicio del chatbot web. |
+| `lib/assistant.mjs`, `lib/knowledge.json` y `lib/prompt.mjs` | Búsqueda, conocimiento y prompt de la versión web. |
+
+La recuperación es léxica: compara las palabras de la pregunta con los títulos, las palabras clave y las preguntas de ejemplo. Luego envía hasta cuatro artículos a Gemini. A esta combinación de recuperación y generación se le llama RAG. No se entrenó un modelo propio ni se utilizaron embeddings.
+
+El system prompt limita las respuestas al tema del proyecto, separa los documentos de las instrucciones y pide identificar los artículos utilizados. Incluye ejemplos de respuesta, también llamados few-shot. El programa comprueba esos identificadores y agrega los enlaces desde su catálogo de fuentes.
+
+## Bases de datos
+
+| Base | Contenido |
+| --- | --- |
+| `desktop/data/picme.db` | Usuarios, referencias a sus plantillas faciales e historial de ingresos. |
+| `desktop/data/chatbot.db` | Fuentes, artículos, preguntas de ejemplo y metadatos del conocimiento. |
+
+Ambas bases se crean al iniciar la aplicación si aún no existen. El código publicado comienza sin estudiantes registrados. Las plantillas faciales se guardan cifradas en archivos externos; la base conserva sus rutas.
+
+Para actualizar el conocimiento, se edita el JSON y se ejecuta `ACTUALIZAR_BD.bat`. El chatbot educativo no consulta los registros biométricos ni realiza operaciones sobre los estudiantes mediante Gemini.
+
+## Versión web y entrega
+
+La web utiliza React, TypeScript y Vinext y está preparada para Cloudflare Workers. Para ejecutarla en desarrollo se necesita Node.js 22.13 o posterior:
 
 ```bash
 npx pnpm install --frozen-lockfile
 npx pnpm dev
 ```
 
-Crea `.env` a partir de `.env.example` y configura `GEMINI_API_KEY` solo en tu entorno local. En el alojamiento, usa las variables de ejecución del servidor y vuelve a desplegar. El endpoint de estado informa de la configuración, pero una respuesta con `mode: "gemini"` es la que demuestra una generación real.
+Las variables `GEMINI_API_KEY` y `GEMINI_MODEL` también deben configurarse en el servidor del alojamiento. El archivo `.env` del PC no configura ese servidor.
 
-## Arquitectura
+El repositorio público y la conexión de Gemini en Windows ya funcionan. Para terminar la entrega falta habilitar el acceso al sitio para su evaluación, configurar y comprobar Gemini en la web y grabar el video en inglés de máximo cinco minutos.
 
-```mermaid
-flowchart TD
-  UI["Interfaz de chat"] --> API["Servidor: valida la consulta"]
-  API --> RAG["Recupera hasta cuatro fragmentos"]
-  KB["Conocimiento estructurado"] --> RAG
-  RAG --> PROMPT["System prompt e historial acotado"]
-  PROMPT --> GEMINI["Gemini API"]
-  GEMINI --> CHECK["Valida JSON y referencias"]
-  CHECK --> UI
-```
+El video puede mostrar la interfaz de PicMe en el PC. También debe explicar la arquitectura, la conexión a la API, el prompt y la base de conocimiento. La guía solicita además un enlace funcional a la aplicación desplegada en la nube.
 
-| Archivo o carpeta | Responsabilidad |
-| --- | --- |
-| `app/page.tsx` | Chat web, declaración, fuentes y reflexión bilingüe. |
-| `app/api/chat/route.ts` | Valida solicitudes, controla frecuencia y llama al servicio. |
-| `lib/assistant.mjs` | Recuperación léxica, preparación del contexto, Gemini REST y validación de salida. |
-| `lib/knowledge.json` | 33 artículos y seis fuentes institucionales. |
-| `lib/prompt.mjs` | System prompt con reglas y ejemplos few-shot. |
-| `desktop/app/chatbot/rag.py` | Integración RAG y contexto conversacional de escritorio. |
-| `desktop/app/chatbot/llm.py` | Cliente Gemini REST para Python. |
-| `desktop/app/chatbot/repository.py` | Persistencia SQLite de conocimiento. |
-| `desktop/app/gui/views/chatbot_view.py` | Chat de escritorio; consulta al proveedor sin bloquear la ventana. |
-| `docs/` | Reflexión, guion, guía de grabación, estado de rúbrica y verificaciones. |
+- [Guion de apoyo en inglés](docs/VIDEO_SCRIPT_EN.md).
+- [Guía de grabación](docs/GUIA_GRABACION_ES.md).
+- [Estado de la entrega](docs/ESTADO_DE_LA_RUBRICA.md).
+- [Pruebas realizadas](docs/VERIFICACION.md).
 
-## Base de conocimiento y prompting
+## Reflexión en español
 
-La base contiene la introducción institucional y los doce principios aportados en la solicitud, junto con explicaciones, ejemplos y contenidos verificados sobre MEDIT y Ubaté. Las interpretaciones didácticas se distinguen de los textos institucionales.
+**¿De qué manera el chatbot respeta y fomenta los principios de la Declaración Persona Transhumana en el aprendizaje y la interacción tecnológica?**
 
-En escritorio, `data/chatbot.db` tiene las tablas `fuente`, `articulo`, `pregunta_ejemplo` y `metadato`. Para actualizarla, edita `desktop/conocimiento/base_conocimiento.json` y ejecuta `ACTUALIZAR_BD.bat`. El importador valida el contenido y realiza la actualización en una transacción. La web usa la copia equivalente `lib/knowledge.json`; mantén ambos archivos sincronizados cuando cambies el contenido.
+En PicMe, el chatbot sirve para comprender los principios y relacionarlos con situaciones cotidianas. Los principios 1, 4, 9 y 10 hablan de dirigir la propia vida, aprender, formar el carácter y asumir responsabilidades. Por eso, el asistente propone preguntas y ejemplos que el estudiante puede analizar. La decisión y la reflexión siguen siendo de la persona.
 
-El RAG es **léxico**: normaliza texto, usa coincidencias ponderadas y reconoce números de principios. No se usaron embeddings ni se entrenó un LLM desde cero. El prompt delimita el dominio, separa los documentos de las instrucciones, incluye few-shot, pide ejemplos identificados como didácticos y solicita una salida JSON con referencias a los artículos recuperados.
+El cuidado de la vida y del bienestar, presente en los principios 2, 3, 5 y 12, también orienta el proyecto. Una respuesta debe ser comprensible y respetuosa. El chat educativo trabaja con documentos institucionales y no necesita consultar fotografías, plantillas faciales o contraseñas de los estudiantes. Al usar Gemini, la pregunta y los fragmentos de contexto se envían al proveedor; por eso se informa el modo utilizado y también existe una consulta local.
 
-El historial se limita a unos pocos turnos. La aplicación valida que las referencias existan entre los documentos recuperados y construye los enlaces desde su catálogo. Este control no demuestra que cada frase generada esté sustentada: aún hace falta contrastar las fuentes.
+El principio 6 invita a considerar a los demás, los seres vivos y la naturaleza. Aplicarlo al proyecto implica pensar en las consecuencias de nuestras decisiones técnicas. Por ejemplo, una dificultad del reconocimiento facial no debe llevar a tratar de manera injusta a un estudiante. El chatbot tampoco debe poner etiquetas sobre la identidad de una persona. El principio 8 se relaciona con mantener un diálogo respetuoso y apoyar la convivencia.
 
-## Alcance del agente
+Los principios 7 y 11 recuerdan que mejorar requiere responsabilidad y que el desarrollo personal no depende necesariamente de la tecnología. Integrar Gemini puede facilitar una explicación, pero eso no significa que todas sus respuestas sean correctas. Por esta razón se muestran fuentes y se revisa qué documentos se recuperaron. Aun así, los errores de interpretación y de redacción requieren revisión humana.
 
-Se eligió un asistente educativo en la interfaz, opción permitida por la guía. Puede explicar, relacionar y comparar principios con contexto. No ejecuta SQL ni operaciones CRUD mediante el LLM, y no decide permisos de acceso facial. El backend MySQL original de `desktop/backend` es opcional y no se expone en la web.
+La transformación educativa se evidencia cuando la herramienta ayuda a comprender y a tomar mejores decisiones. Para evaluarla hace falta probar preguntas reales, revisar errores y escuchar a quienes la utilizan. Tener una API conectada es una parte del proyecto; su utilidad para aprender debe comprobarse.
 
-El modo local se usa cuando falta la clave o no hay sustento para la pregunta. Un error del proveedor activa un respaldo explícito, con `llmUsed: false` / `llm_usado: false`. No se declara ese respaldo como cumplimiento de la integración real con un LLM.
+## Reflection in English
 
-## Pruebas y límites
+**How does the chatbot support the Transhuman Person Declaration regarding ethical AI integration, human augmentation and educational transformation?**
 
-- **192 pruebas Python aprobadas**, incluidas 13 de RAG y contrato Gemini con proveedor simulado.
-- **12 pruebas web aprobadas**, sobre recuperación, contexto, límites, transporte y respaldo, con HTTP simulado.
-- TypeScript verificado y compilación de producción realizada.
-- La llamada real a Gemini requiere una clave del usuario y se comprueba con `desktop/verificar_llm.py`.
-- La cámara física de tu PC y la precisión biométrica con personas reales requieren evaluación local.
-- No se realizó una verificación visual del sitio en un navegador durante esta preparación; se hicieron pruebas de lógica, tipos y compilación.
+In PicMe, the chatbot helps students understand the declaration and connect its principles with everyday situations. Principles 1, 4, 9 and 10 address autonomy, learning, character and responsibility. The assistant therefore offers questions and examples for the student to consider. The learner remains responsible for their own decisions and reflection.
 
-```bash
-node --test tests/assistant.test.mjs
-node node_modules/typescript/bin/tsc --noEmit
-```
+Care for life and well-being, expressed in principles 2, 3, 5 and 12, also guides the project. Responses should be clear and respectful. The educational chat uses institutional documents and does not need students' photographs, facial templates or passwords. When Gemini is enabled, the question and the retrieved passages are sent to the provider. The interface identifies the response mode, and a local knowledge lookup is also available.
 
-```powershell
-cd desktop
-.\.venv\Scripts\python.exe pruebas_locales.py
-```
+Principle 6 asks us to consider other people, living beings and nature. In this project, this means considering the consequences of technical decisions. For example, a facial recognition problem should not lead to unfair treatment of a student. The chatbot should not assign identities to people either. Principle 8 supports respectful dialogue and peaceful coexistence.
 
-Las pruebas opcionales del backend original requieren `requirements-backend.txt` y `pruebas_locales.py --backend`.
+Principles 7 and 11 connect improvement with responsibility and remind us that personal development does not necessarily depend on technology. Gemini can help explain a topic, but this does not make every answer correct. The application shows sources and checks the document references. Interpretation and writing errors still require human review.
 
-## Repositorio y video
+Educational transformation depends on whether the tool helps people understand and make better-informed decisions. This requires real questions, error review and feedback from users. Connecting an API is one part of the project; its educational value must also be evaluated.
 
-[Instrucciones para activar el LLM y publicar GitHub](docs/DESPLIEGUE_Y_GITHUB.md). No hay un repositorio público verificado todavía. El paquete incluye la fuente; si incluye `historial.bundle`, `PUBLICAR_GITHUB.bat` permite enviar ese historial al repositorio público vacío que crees.
+## Pruebas
 
-[Guion del video en inglés](docs/VIDEO_SCRIPT_EN.md), [guía para grabarlo](docs/GUIA_GRABACION_ES.md) y [preguntas para sustentar](docs/PREGUNTAS_PARA_SUSTENTAR.md). El guion está preparado para menos de cinco minutos, pero debes ensayarlo, grabar tu explicación y adjuntar el enlace. El video aún no está grabado.
+En Windows se comprobó una respuesta real con HTTP 200 y el modelo `gemini-3.5-flash-lite`. Después se probaron preguntas sobre la declaración en la interfaz de PicMe.
 
-[Estado de la rúbrica](docs/ESTADO_DE_LA_RUBRICA.md) y [registro de verificación](docs/VERIFICACION.md). La asistencia presencial indicada en la guía es una condición independiente de estos entregables.
+La corrección de las consultas de reflexión pasó 43 pruebas del buscador y del RAG en Python y 13 pruebas web. Las pruebas automáticas del proveedor usan respuestas simuladas. La evaluación de la cámara y de la precisión del reconocimiento facial requiere pruebas con personas y con el dispositivo real.
 
-## Reflexión — Español
+## Fuentes principales
 
-**¿De qué manera el agente/chatbot respeta y fomenta los principios de la declaración en el aprendizaje y la interacción tecnológica?**
+- [Declaración Persona Transhumana](https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/120-rectoria/3816-declaracionpersonatranshumana).
+- [Modelo Educativo Digital Transmoderno](https://www.ucundinamarca.edu.co/index.php/modelo-educativo-digital-transmoderno).
+- [Los ejes del modelo educativo](https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/112-institucional/medit/3947-el-sosten-del-modelo-educativo).
+- [Seccional Ubaté](https://www.ucundinamarca.edu.co/index.php/sedes/Seccionalubate).
+- [Libro MEDIT](https://www.ucundinamarca.edu.co/index.php/rectoria/libro-medit).
+- [Plan de Desarrollo 2024–2027](https://www.ucundinamarca.edu.co/documents/secretaria-general/PLAN%20DE%20DESARROLLO%202024-2027.pdf), página 17.
+- [Documentación de Gemini](https://ai.google.dev/gemini-api/docs).
 
-PicMe entiende la mejora humana como una oportunidad de aprender, comprender y decidir con mayor criterio. El asistente relaciona los doce compromisos de la declaración con situaciones educativas. En los principios 1 y 9, la autonomía exige que una respuesta de la IA sea un apoyo para organizar la propia vida, y no una orden ni un reemplazo del juicio del estudiante. Por eso el bot aporta explicaciones, ejemplos y fuentes que pueden ser contrastadas.
-
-Los principios 5 y 6 orientan el cuidado y la consideración del otro. El chat no recibe imágenes faciales ni consulta la base biométrica del proyecto. Solo usa documentos educativos y la pregunta necesaria para responder. Cuando se activa Gemini, esa pregunta y los fragmentos recuperados se transmiten a un proveedor externo: la interfaz informa esta condición y el modo local sigue disponible para quien prefiera evitar esa transmisión.
-
-Los principios 7 y 11 conectan la innovación con la mejora responsable. La declaración señala que el perfeccionamiento no depende necesariamente de la ciencia y la tecnología. Así, integrar un LLM no demuestra por sí mismo una mejora educativa: esta debe valorarse mediante comprensión, utilidad, accesibilidad y revisión de errores. El modelo puede proponer una comparación o un ejemplo, pero no puede ejecutar SQL, modificar registros ni decidir quién ingresa al campus.
-
-El principio 8 se concreta en un diálogo respetuoso y comprensible; el 12 invita a apoyar el bienestar sin convertir al bot en un profesional de la salud. La introducción institucional sobre dignidad y diversidad se conserva y se distingue de los doce compromisos personales. El asistente no infiere la identidad de género ni atribuye características personales a quienes adoptan la declaración.
-
-El diseño reconoce límites: recuperar fuentes y validar sus identificadores reduce ciertos errores, pero no garantiza que cada afirmación generada esté sustentada. Tampoco un parpadeo o una buena prueba sintética garantizan acceso biométrico justo o resistente a todo ataque. La transformación educativa requiere supervisión humana, posibilidad de corregir contenidos y evaluación con personas reales; no basta con automatizar respuestas.
-
-## Reflection — English
-
-**How does the implemented AI agent/chatbot align with and support the Transhuman Person Declaration of Universidad de Cundinamarca regarding ethical AI integration, human augmentation, and educational transformation?**
-
-PicMe understands human augmentation as an opportunity to learn, understand and make better-informed decisions. The assistant connects the twelve commitments in the declaration with educational situations. Under principles 1 and 9, autonomy means that an AI response supports the student’s own judgement rather than replacing it. The bot therefore provides explanations, examples and sources that the learner can check.
-
-Principles 5 and 6 guide care and consideration for others. The chat does not receive facial images or access the project’s biometric database. It uses educational documents and the question needed to answer. When Gemini is enabled, that question and the retrieved passages are sent to an external provider. The interface discloses this condition, and local mode remains available for learners who prefer to avoid that transfer.
-
-Principles 7 and 11 connect innovation with responsible improvement. The declaration explicitly states that personal improvement does not necessarily depend on science and technology. Adding an LLM is therefore not proof of educational progress. Progress must be assessed through understanding, usefulness, accessibility and error review. The model can suggest comparisons or examples, but it cannot execute SQL, modify records or decide who enters the campus.
-
-Principle 8 is reflected in respectful, understandable dialogue. Principle 12 encourages well-being without presenting the assistant as a healthcare professional. The institutional introduction about dignity and diversity is preserved and distinguished from the twelve personal commitments. The assistant does not infer gender identity or assign personal characteristics to people who adopt the declaration.
-
-The design also acknowledges its limits. Retrieving sources and checking their identifiers can reduce some errors, but these controls do not prove that every generated claim is supported. Likewise, a blink check or a successful synthetic test cannot guarantee fair biometric access or resistance to every attack. Educational transformation requires human supervision, correction mechanisms and evaluation with real people, rather than automation alone.
-
-## Fuentes
-
-Contenido institucional consultado el 15 de octubre de 2026:
-
-1. [Declaración Persona Transhumana](https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/120-rectoria/3816-declaracionpersonatranshumana).
-2. [Modelo Educativo Digital Transmoderno](https://www.ucundinamarca.edu.co/index.php/modelo-educativo-digital-transmoderno).
-3. [Reflexión sobre los ejes del modelo educativo](https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/112-institucional/medit/3947-el-sosten-del-modelo-educativo).
-4. [Plan de Desarrollo 2024–2027](https://www.ucundinamarca.edu.co/documents/secretaria-general/PLAN%20DE%20DESARROLLO%202024-2027.pdf), página 17.
-5. [Seccional Ubaté](https://www.ucundinamarca.edu.co/index.php/sedes/Seccionalubate).
-6. [Libro MEDIT](https://www.ucundinamarca.edu.co/index.php/rectoria/libro-medit).
-
-Integración técnica:
-
-- [Generación de contenido y system instructions de Gemini](https://ai.google.dev/api/generate-content).
-- [Claves de API de Gemini](https://ai.google.dev/gemini-api/docs/api-key).
-- [Modelo Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash).
-
-Este es un proyecto académico y no un canal oficial de atención de la Universidad.
-
-## Actualización de consultas de reflexión personal
-
-Se corrigió la recuperación para «como se si soy una persona tras humana» y variantes: se aportan al LLM una actividad didáctica y los doce compromisos completos, con un límite explícito frente a clasificar identidades o emitir certificaciones. Se verificaron 43 pruebas Python del buscador y el RAG, y 13 pruebas web, con proveedor simulado para la generación. Las instrucciones de ortografía se reforzaron en el prompt; la redacción de cada respuesta generada puede variar.
+PicMe es un proyecto académico. Para trámites e información institucional vigente se deben consultar los canales oficiales de la Universidad.

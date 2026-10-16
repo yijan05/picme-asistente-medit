@@ -50,6 +50,26 @@ class RagIntegrationTest(unittest.TestCase):
         ids = [d["id"] for d in self.provider.calls[-1][1]]
         self.assertEqual(ids[:2], ["principio_05", "principio_09"])
 
+    def test_pregunta_reportada_recupera_reflexion_y_declaracion_para_el_llm(self):
+        for question in ["como se si soy una persona tras humana",
+                         "¿Cómo sé si soy una persona transhumana?",
+                         "¿Soy una persona trans humana?"]:
+            with self.subTest(question=question):
+                answer = self.bot.ask(question)
+                self.assertTrue(answer.llm_usado)
+                self.assertEqual(answer.modo, "gemini")
+                self.assertEqual(answer.articulo_id, "declaracion_reflexion")
+                ids = [d["id"] for d in self.provider.calls[-1][1]]
+                self.assertEqual(ids, ["declaracion_reflexion", "declaracion_completa"])
+
+    def test_error_del_llm_conserva_una_reflexion_educativa_local(self):
+        with patch.object(self.provider, "generate", side_effect=LLMError("Error temporal.")):
+            answer = self.bot.ask("como se si soy una persona tras humana")
+        self.assertEqual(answer.modo, "local_respaldo")
+        self.assertFalse(answer.llm_usado)
+        self.assertIn("actividad didáctica", answer.texto)
+        self.assertIn("no es una evaluación", answer.texto)
+
     def test_historial_contextual_acotado(self):
         for number in range(1, 7):
             self.bot.ask(f"Explícame el principio {number}")

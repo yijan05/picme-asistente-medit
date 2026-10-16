@@ -42,6 +42,11 @@ class RagAssistant:
                 selected.extend(f"principio_{n:02d}" for n in numbers if 1 <= n <= 12)
         if direct.articulo_id:
             selected.append(direct.articulo_id)
+        if direct.articulo_id == "declaracion_reflexion":
+            # Las preguntas personales necesitan los compromisos completos,
+            # no una coincidencia genérica con el título de un libro del MEDIT.
+            selected.append("declaracion_completa")
+            return [self.local.by_id[id] for id in selected if id in self.local.by_id]
         if normalized in {"un ejemplo", "dame un ejemplo", "mas sencillo", "explicalo", "compare them", "an example"}:
             selected.extend(self.previous_ids)
         query = tokens(question)

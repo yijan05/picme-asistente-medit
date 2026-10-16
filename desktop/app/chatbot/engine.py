@@ -15,7 +15,10 @@ from .repository import KnowledgeRepository
 def normalize(text: str) -> str:
     text = unicodedata.normalize("NFKD", text.casefold())
     text = "".join(c for c in text if not unicodedata.combining(c))
-    return " ".join(re.findall(r"[a-z0-9]+", text))
+    text = " ".join(re.findall(r"[a-z0-9]+", text))
+    # Admitir la palabra separada y la omisión de la n, sin confundir
+    # 'persona trans' o 'transgénero' con el concepto de la declaración.
+    return re.sub(r"\b(?:trans|tras)\s+(human[ao]s?)\b", r"trans\1", text)
 
 
 STOP = set("a al algo ante aqui asi cual cuales como con conoce conocer de del dime el ella ellas ellos en es esa esas ese eso esta estan este estos explicame explicar explicacion favor fue ha hay la las le lo los me mi mis nos o para pero por porque puedes puede que quiero se si sobre son su sus te tengo tiene toda todo tu un una unas unos y yo".split())
@@ -25,6 +28,9 @@ ALIASES = {"medit": "medit", "meditacion": "meditacion", "ucundinamarca": "unive
            "principios": "principio", "puntos": "principio", "punto": "principio",
            "numeral": "principio", "declaracion": "declaracion", "transhumanas": "transhumana",
            "transhumano": "transhumana", "transhumanos": "transhumana",
+           "trashumana": "transhumana", "trashumano": "transhumana",
+           "trashumanas": "transhumana", "trashumanos": "transhumana",
+           "transumana": "transhumana", "transumano": "transhumana",
            "dimensiones": "dimension", "ejes": "eje", "campos": "campo",
            "significa": "significado", "significar": "significado", "responsable": "responsabilidad"}
 ORDINALS = {"primero": 1, "primer": 1, "segundo": 2, "tercero": 3, "tercer": 3,
@@ -36,6 +42,22 @@ ORDINALS = {"primero": 1, "primer": 1, "segundo": 2, "tercero": 3, "tercer": 3,
 
 def tokens(text: str) -> set[str]:
     return {ALIASES.get(t, t) for t in normalize(text).split() if t not in STOP}
+
+
+def is_declaration_reflection(question: str) -> bool:
+    """Detecta una solicitud de reflexión; nunca clasifica a la persona."""
+    words = set(normalize(question).split())
+    topic = tokens(question)
+    if "transhumana" in topic and words & {
+        "soy", "somos", "eres", "cumplo", "cumplimos", "considerarme",
+        "considero", "identificarme", "convertirme", "ser", "reconocerme",
+    }:
+        return True
+    return bool(
+        topic & {"principio", "declaracion"}
+        and words & {"aplico", "aplicar", "aplicarlos", "practico", "practicar", "vivir"}
+        and words & {"mi", "mis", "vida", "cotidiana", "diaria"}
+    )
 
 
 @dataclass
@@ -135,7 +157,16 @@ class Chatbot:
             return self._answer(self.by_number[numbers[0]])
         if any(p in q for p in ("identidad de genero", "transgenero", "persona trans ", "personas trans ")):
             return self._answer(self.by_id["declaracion_contexto"]) 
+        if is_declaration_reflection(question):
+            # Mantener compatibilidad con una BD anterior a la actualización.
+            document = self.by_id.get("declaracion_reflexion", self.by_id["declaracion_resumen"])
+            return self._answer(document)
         query_tokens = tokens(question)
+        if "transhumana" in query_tokens and query_tokens <= {
+            "persona", "transhumana", "significado", "declaracion",
+            "universidad", "cundinamarca", "medit",
+        }:
+            return self._answer(self.by_id["declaracion_resumen"])
         # La mención institucional acompaña muchas preguntas sin cambiar
         # su tema principal: 'qué significa MEDIT en la Universidad...'.
         if "medit" in query_tokens or {"persona", "transhumana"} <= query_tokens:

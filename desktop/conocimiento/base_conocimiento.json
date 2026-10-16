@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.15-1",
+  "version": "2026.10.16-1",
   "fuentes": [
     {
       "id": "declaracion",
@@ -753,6 +753,33 @@
         "oferta",
         "horarios",
         "rector actual"
+      ]
+    },
+    {
+      "id": "declaracion_reflexion",
+      "categoria": "Declaración",
+      "titulo": "Reflexión personal sobre la Declaración Persona Transhumana",
+      "contenido": "La declaración presenta doce compromisos que puedes relacionar con tus acciones cotidianas. Como actividad didáctica del proyecto PicMe, puedes preguntarte: ¿Organizo mi vida y asumo la responsabilidad de mis decisiones (principios 1 y 9)? ¿Cuido mi salud y bienestar (5)? ¿Escucho a los demás y considero a los seres vivos y a la naturaleza (6)? ¿Busco mejorar, contribuir a la convivencia y evitar daños al entorno (7, 8 y 11)? ¿Cultivo emociones y comportamientos positivos (12)?\n\nElige una acción pequeña que puedas mejorar, explica por qué la escoges y revisa después qué aprendiste. Puedes profundizar leyendo los doce principios completos. Esta propuesta no es una evaluación ni un certificado de la Universidad. El chatbot no decide tu identidad, tu dignidad ni si eres o no una persona transhumana; ofrece preguntas para apoyar tu reflexión y tu autonomía. Tampoco debe deducir tu identidad de género a partir de estos compromisos.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "¿Cómo sé si soy una persona transhumana?",
+        "¿Soy una persona transhumana?",
+        "¿Cómo puedo ser una persona transhumana?",
+        "¿Cómo puedo aplicar estos principios a mi vida?",
+        "¿Cómo practico la declaración en mi vida diaria?",
+        "¿Cómo puedo reflexionar sobre los doce compromisos?",
+        "¿Cómo puedo reconocerme en la Declaración Persona Transhumana?"
+      ],
+      "palabras_clave": [
+        "persona transhumana",
+        "reflexión personal",
+        "soy",
+        "ser",
+        "vida diaria",
+        "aplicar principios",
+        "autonomía",
+        "compromisos",
+        "autoobservación"
       ]
     }
   ]

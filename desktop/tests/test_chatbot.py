@@ -160,7 +160,38 @@ class ChatbotTest(unittest.TestCase):
 
     def test_pregunta_como_ser_persona_transhumana(self):
         self.assertEqual(self.bot.ask("cómo puedo ser persona transhumana").articulo_id,
-                         "declaracion_resumen")
+                         "declaracion_reflexion")
+
+    def test_reflexion_personal_con_variantes_de_escritura(self):
+        for q in ["como se si soy una persona tras humana",
+                  "¿Cómo sé si soy una persona transhumana?",
+                  "soy una persona trans humana?", "¿Soy una persona trashumana?",
+                  "¿Cómo puedo ser una persona transhumana?",
+                  "¿Cómo puedo aplicar estos principios a mi vida?"]:
+            with self.subTest(q=q):
+                answer = self.bot.ask(q)
+                self.assertEqual(answer.articulo_id, "declaracion_reflexion")
+                self.assertIn("actividad didáctica", answer.texto)
+                self.assertIn("no es una evaluación", answer.texto)
+                self.assertTrue(answer.fuentes)
+
+    def test_palabra_separada_no_se_confunde_con_identidad_de_genero(self):
+        for q in ["¿Qué es una persona tras humana?", "¿Qué es una persona trans humana?",
+                  "¿Qué es una persona trashumana?"]:
+            with self.subTest(q=q):
+                self.assertEqual(self.bot.ask(q).articulo_id, "declaracion_resumen")
+        self.assertEqual(self.bot.ask("¿Soy una persona transgénero?").articulo_id,
+                         "declaracion_contexto")
+
+    def test_reflexion_no_reemplaza_un_principio_explicito(self):
+        self.assertEqual(self.bot.ask("¿Cómo aplico el principio 6 a mi vida?").articulo_id,
+                         "principio_06")
+
+    def test_soy_fuera_del_tema_no_se_convierte_en_reflexion(self):
+        for q in ["¿Cómo sé si soy buena en cálculo?", "¿Soy una persona con matrícula activa?",
+                  "¿Cómo sé si soy mayor de edad?", "¿Cómo sé si tengo una enfermedad?"]:
+            with self.subTest(q=q):
+                self.assertFalse(self.bot.ask(q).encontrado)
 
     def test_doce_en_plural_es_la_lista_y_en_singular_el_ultimo(self):
         self.assertEqual(self.bot.ask("explícame los doce principios").articulo_id,

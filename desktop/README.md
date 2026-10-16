@@ -29,12 +29,14 @@ PICME_CHAT_MODE=auto
 
 El prompt está en `conocimiento/system_prompt.txt`. Contiene propósito, restricción de dominio, reglas de evidencia, ejemplos few-shot y relación con los principios transhumanos. Se usa recuperación léxica, no embeddings.
 
+Las consultas de reflexión personal, por ejemplo «como se si soy una persona tras humana», recuperan una actividad didáctica y los doce compromisos completos. El asistente reconoce la palabra separada y variantes comunes; ayuda a reflexionar sin asignar identidades ni emitir certificaciones. El prompt también pide revisar ortografía y concordancia.
+
 ## Bases de datos
 
 | Archivo | Contenido |
 | --- | --- |
 | `data/picme.db` | Usuarios, rutas biométricas y accesos locales. |
-| `data/chatbot.db` | 32 artículos y seis fuentes del asistente. |
+| `data/chatbot.db` | 33 artículos y seis fuentes del asistente. |
 | `conocimiento/base_conocimiento.json` | Fuente editable para importar el conocimiento. |
 | `app/chatbot/schema.sql` | Esquema SQLite del chatbot. |
 

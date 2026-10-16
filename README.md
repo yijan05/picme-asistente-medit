@@ -53,7 +53,7 @@ flowchart TD
 | `app/page.tsx` | Chat web, declaración, fuentes y reflexión bilingüe. |
 | `app/api/chat/route.ts` | Valida solicitudes, controla frecuencia y llama al servicio. |
 | `lib/assistant.mjs` | Recuperación léxica, preparación del contexto, Gemini REST y validación de salida. |
-| `lib/knowledge.json` | 32 artículos y seis fuentes institucionales. |
+| `lib/knowledge.json` | 33 artículos y seis fuentes institucionales. |
 | `lib/prompt.mjs` | System prompt con reglas y ejemplos few-shot. |
 | `desktop/app/chatbot/rag.py` | Integración RAG y contexto conversacional de escritorio. |
 | `desktop/app/chatbot/llm.py` | Cliente Gemini REST para Python. |
@@ -152,3 +152,7 @@ Integración técnica:
 - [Modelo Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash).
 
 Este es un proyecto académico y no un canal oficial de atención de la Universidad.
+
+## Actualización de consultas de reflexión personal
+
+Se corrigió la recuperación para «como se si soy una persona tras humana» y variantes: se aportan al LLM una actividad didáctica y los doce compromisos completos, con un límite explícito frente a clasificar identidades o emitir certificaciones. Se verificaron 43 pruebas Python del buscador y el RAG, y 13 pruebas web, con proveedor simulado para la generación. Las instrucciones de ortografía se reforzaron en el prompt; la redacción de cada respuesta generada puede variar.

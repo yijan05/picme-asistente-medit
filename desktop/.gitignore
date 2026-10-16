@@ -1,0 +1,14 @@
+# Datos generados en ejecución (base de datos, plantillas cifradas, modelos 3D)
+data/
+
+# Modelo de MediaPipe descargado por download_model.sh (binario, no es código propio)
+models/*.task
+
+# Entornos y cachés de Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Configuración local / claves
+.env

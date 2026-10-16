@@ -1,0 +1,759 @@
+{
+  "version": "2026.10.15-1",
+  "fuentes": [
+    {
+      "id": "declaracion",
+      "titulo": "Declaración persona transhumana",
+      "url": "https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/120-rectoria/3816-declaracionpersonatranshumana",
+      "nota": "Introducción y doce principios aportados por la usuaria y contrastados con la página institucional. Las explicaciones y ejemplos son material didáctico del proyecto.",
+      "consultada_el": "2026-10-15"
+    },
+    {
+      "id": "medit",
+      "titulo": "Modelo Educativo Digital Transmoderno",
+      "url": "https://www.ucundinamarca.edu.co/index.php/modelo-educativo-digital-transmoderno",
+      "nota": "Síntesis didáctica; no reemplaza el documento institucional.",
+      "consultada_el": "2026-10-15"
+    },
+    {
+      "id": "ejes",
+      "titulo": "Reflexión sobre los ejes del modelo educativo",
+      "url": "https://www.ucundinamarca.edu.co/index.php/noticias-ucundinamarca/112-institucional/medit/3947-el-sosten-del-modelo-educativo",
+      "nota": "Artículo institucional del 28 de octubre de 2022.",
+      "consultada_el": "2026-10-15"
+    },
+    {
+      "id": "plan",
+      "titulo": "Plan de Desarrollo Universidad de Cundinamarca 2024–2027",
+      "url": "https://www.ucundinamarca.edu.co/documents/secretaria-general/PLAN%20DE%20DESARROLLO%202024-2027.pdf",
+      "nota": "Naturaleza, misión, visión y valores, página 17. Misión y visión resumidas, no transcripción normativa.",
+      "consultada_el": "2026-10-15"
+    },
+    {
+      "id": "ubate",
+      "titulo": "Seccional Ubaté",
+      "url": "https://www.ucundinamarca.edu.co/index.php/sedes/Seccionalubate",
+      "nota": "La dirección y los contactos pueden cambiar. Consultar la página oficial antes de desplazarse.",
+      "consultada_el": "2026-10-15"
+    },
+    {
+      "id": "libro",
+      "titulo": "Libro Modelo Educativo Digital Transmoderno – MEDIT",
+      "url": "https://www.ucundinamarca.edu.co/index.php/rectoria/libro-medit",
+      "nota": "Portal oficial del libro y sus capítulos.",
+      "consultada_el": "2026-10-15"
+    }
+  ],
+  "articulos": [
+    {
+      "id": "declaracion_resumen",
+      "categoria": "Declaración",
+      "titulo": "Qué es la Declaración Persona Transhumana",
+      "contenido": "La Declaración Persona Transhumana reúne doce compromisos para orientar la propia vida, el cuidado personal, la mejora continua, la responsabilidad, la convivencia y el cuidado del entorno. Su firma está atribuida a Adriano Muñoz Barrera, en Fusagasugá, el 26 de agosto de 2022. Puedo mostrarte la declaración completa o explicar cada principio con un ejemplo.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "¿Qué es la declaración de persona transhumana?",
+        "¿De qué trata la declaración?",
+        "Resume la declaración",
+        "¿Qué significa persona transhumana?",
+        "¿Qué es una persona transhumana?"
+      ],
+      "palabras_clave": [
+        "declaracion persona transhumana",
+        "significado",
+        "resumen",
+        "compromisos"
+      ]
+    },
+    {
+      "id": "declaracion_contexto",
+      "categoria": "Declaración",
+      "titulo": "Introducción institucional: dignidad, diversidad e inclusión",
+      "contenido": "Introducción publicada en la página institucional y aportada en tu solicitud:\n\nLa Declaración de Persona Transhumana en la Universidad de Cundinamarca es una postura ética e inclusiva que reconoce la identidad de género y la dignidad de las personas transhumanas dentro de la comunidad universitaria. Esta declaración busca generar un ambiente de respeto, comprensión y apoyo, garantizando que todos los individuos, reafirmen su compromiso con la diversidad, la no discriminación y la creación de un espacio seguro y acogedor para todas las personas.\n\nLa página presenta después los doce compromisos personales de la declaración. Para estudiarla, conviene leer la introducción y los principios completos, junto con su contexto en el MEDIT. No se debe deducir la identidad de género de una persona a partir de su adhesión a estos principios.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "¿Qué dice la introducción de la declaración?",
+        "¿Qué relación tiene con la identidad de género?",
+        "¿La declaración habla de inclusión?",
+        "¿Qué dice sobre la diversidad y la no discriminación?",
+        "¿Persona transhumana significa persona transgénero?"
+      ],
+      "palabras_clave": [
+        "introduccion",
+        "identidad de genero",
+        "diversidad",
+        "inclusion",
+        "dignidad",
+        "transgenero",
+        "discriminacion"
+      ]
+    },
+    {
+      "id": "declaracion_completa",
+      "categoria": "Declaración",
+      "titulo": "Los doce principios de la Declaración Persona Transhumana",
+      "contenido": "DECLARACIÓN PERSONA TRANSHUMANA\n\n1. ORGANIZO y dirijo mi propia vida.\n\n2. ENTIENDO y defiendo que la vida es la gran apuesta del siglo 21.\n\n3. EDIFICO un estilo propio de vida que me permite ser feliz, amar, vivir bien y lograr mi desarrollo personal.\n\n4. DETERMINO mi vida, aprendo de ella y asumo las buenas prácticas de mis semejantes, que contribuyen a mi desarrollo individual.\n\n5. ME VALORO Y CUIDO mi salud corporal, mental, emocional, sentimental y espiritual.\n\n6. VOY MÁS ALLÁ DE MÍ, cada día mejoro, reinvento y evoluciono, dejando de lado los intereses propios, tomando la posición del otro, los seres vivos y la naturaleza.\n\n7. ME PERFECCIONO, antes y no necesariamente, a través de la tecnología y la ciencia; además, lucho por mi felicidad, realizo mi plan de vida, sin desconocer a los demás y dando lo mejor como profesional, emprendedor, innovador y transformador de mi entorno.\n\n8. VIVO Y CONTRIBUYO para que la comunidad esté en paz y armonía.\n\n9. Soy LIBRE, AUTÓNOMO Y RESPONSABLE a través del diálogo y la construcción, como ideal regulativo; me dirijo, controlo y dicto mis propias leyes.\n\n10. FORJO MI PERSONALIDAD, el carácter, la identidad, la autonomía y la responsabilidad.\n\n11. REALIZO actos transformadores de mejora que permiten, entre distintas actuaciones, escoger la que me aporte y no me haga daño, ni a la naturaleza, la sociedad, la convivencia y la vida democrática.\n\n12. EXPLORO y CULTIVO los sentimientos, emociones y comportamientos positivos, para promover mi felicidad.\n\nAdriano Muñoz Barrera\nRector UCundinamarca S21\nFusagasugá\nAgosto, 26 de 2022",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Muéstrame los 12 principios",
+        "Dame la declaración completa",
+        "¿Cuáles son los principios de la declaración?",
+        "Los doce puntos",
+        "¿Cuántos principios tiene la declaración?",
+        "¿Cuáles son los 12 principios?"
+      ],
+      "palabras_clave": [
+        "declaracion completa",
+        "doce",
+        "12",
+        "todos",
+        "lista",
+        "principios"
+      ]
+    },
+    {
+      "id": "declaracion_autoria",
+      "categoria": "Declaración",
+      "titulo": "Autor y fecha de la declaración",
+      "contenido": "La firma que acompaña la declaración es la de Adriano Muñoz Barrera, identificado allí como rector UCundinamarca S21, y está fechada en Fusagasugá el 26 de agosto de 2022. El encabezado de la página web muestra 24 de agosto de 2022: la fecha de la firma y la del encabezado no son iguales.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "¿Quién escribió la declaración?",
+        "¿Quién es el autor de la declaración?",
+        "¿Cuándo se firmó la declaración?",
+        "¿De qué fecha es la declaración?",
+        "¿Quién es Adriano Muñoz Barrera?"
+      ],
+      "palabras_clave": [
+        "autor",
+        "autoria",
+        "fecha",
+        "firma",
+        "adriano",
+        "2022"
+      ]
+    },
+    {
+      "id": "principio_01",
+      "categoria": "Principios",
+      "titulo": "Principio 1: ORGANIZO y dirijo mi propia vida.",
+      "contenido": "Principio 1\n\nORGANIZO y dirijo mi propia vida.\n\nEn palabras sencillas: Tomar decisiones sobre mi vida y ordenar mis metas y responsabilidades.\n\nEjemplo didáctico: Preparar un horario que combine estudio, descanso y compromisos personales.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 1",
+        "¿Qué significa organizo?",
+        "Dame un ejemplo de organizo",
+        "¿Qué dice sobre dirijo?",
+        "¿Qué dice sobre organizar mi vida?",
+        "¿Qué dice sobre proyecto de vida?",
+        "¿Qué dice sobre metas?"
+      ],
+      "palabras_clave": [
+        "organizo",
+        "dirijo",
+        "organizar mi vida",
+        "proyecto de vida",
+        "metas"
+      ],
+      "principio": 1
+    },
+    {
+      "id": "principio_02",
+      "categoria": "Principios",
+      "titulo": "Principio 2: ENTIENDO y defiendo que la vida es la gran apuesta del siglo 21.",
+      "contenido": "Principio 2\n\nENTIENDO y defiendo que la vida es la gran apuesta del siglo 21.\n\nEn palabras sencillas: Dar valor a la vida y actuar para cuidarla.\n\nEjemplo didáctico: Evitar acciones que pongan en riesgo mi vida o la de otras personas.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 2",
+        "¿Qué significa entiendo?",
+        "Dame un ejemplo de entiendo",
+        "¿Qué dice sobre defiendo?",
+        "¿Qué dice sobre vida gran apuesta?",
+        "¿Qué dice sobre siglo 21?"
+      ],
+      "palabras_clave": [
+        "entiendo",
+        "defiendo",
+        "vida gran apuesta",
+        "siglo 21"
+      ],
+      "principio": 2
+    },
+    {
+      "id": "principio_03",
+      "categoria": "Principios",
+      "titulo": "Principio 3: EDIFICO un estilo propio de vida que me permite ser feliz",
+      "contenido": "Principio 3\n\nEDIFICO un estilo propio de vida que me permite ser feliz, amar, vivir bien y lograr mi desarrollo personal.\n\nEn palabras sencillas: Construir una forma de vivir que favorezca mi bienestar y crecimiento.\n\nEjemplo didáctico: Elegir hábitos y relaciones que me ayuden a crecer y vivir bien.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 3",
+        "¿Qué significa edifico?",
+        "Dame un ejemplo de edifico",
+        "¿Qué dice sobre estilo propio?",
+        "¿Qué dice sobre desarrollo personal?",
+        "¿Qué dice sobre vivir bien?"
+      ],
+      "palabras_clave": [
+        "edifico",
+        "estilo propio",
+        "desarrollo personal",
+        "vivir bien"
+      ],
+      "principio": 3
+    },
+    {
+      "id": "principio_04",
+      "categoria": "Principios",
+      "titulo": "Principio 4: DETERMINO mi vida",
+      "contenido": "Principio 4\n\nDETERMINO mi vida, aprendo de ella y asumo las buenas prácticas de mis semejantes, que contribuyen a mi desarrollo individual.\n\nEn palabras sencillas: Aprender de mis experiencias y de los buenos ejemplos de otras personas.\n\nEjemplo didáctico: Mejorar mi forma de estudiar al aprender una estrategia útil de una compañera.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 4",
+        "¿Qué significa determino?",
+        "Dame un ejemplo de determino",
+        "¿Qué dice sobre buenas practicas?",
+        "¿Qué dice sobre semejantes?",
+        "¿Qué dice sobre experiencias?"
+      ],
+      "palabras_clave": [
+        "determino",
+        "buenas practicas",
+        "semejantes",
+        "experiencias"
+      ],
+      "principio": 4
+    },
+    {
+      "id": "principio_05",
+      "categoria": "Principios",
+      "titulo": "Principio 5: ME VALORO Y CUIDO mi salud corporal",
+      "contenido": "Principio 5\n\nME VALORO Y CUIDO mi salud corporal, mental, emocional, sentimental y espiritual.\n\nEn palabras sencillas: Cuidarme de manera integral y reconocer mi propio valor.\n\nEjemplo didáctico: Descansar, alimentarme bien y pedir apoyo cuando lo necesito.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 5",
+        "¿Qué significa me valoro?",
+        "Dame un ejemplo de me valoro",
+        "¿Qué dice sobre cuido?",
+        "¿Qué dice sobre autocuidado?",
+        "¿Qué dice sobre salud corporal?",
+        "¿Qué dice sobre salud mental?",
+        "¿Qué dice sobre emocional?",
+        "¿Qué dice sobre espiritual?"
+      ],
+      "palabras_clave": [
+        "me valoro",
+        "cuido",
+        "autocuidado",
+        "salud corporal",
+        "salud mental",
+        "emocional",
+        "espiritual"
+      ],
+      "principio": 5
+    },
+    {
+      "id": "principio_06",
+      "categoria": "Principios",
+      "titulo": "Principio 6: VOY MÁS ALLÁ DE MÍ",
+      "contenido": "Principio 6\n\nVOY MÁS ALLÁ DE MÍ, cada día mejoro, reinvento y evoluciono, dejando de lado los intereses propios, tomando la posición del otro, los seres vivos y la naturaleza.\n\nEn palabras sencillas: Mejorar pensando también en los demás, los seres vivos y la naturaleza.\n\nEjemplo didáctico: Escuchar a una compañera y considerar cómo mis decisiones afectan al grupo y al entorno.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 6",
+        "¿Qué significa voy mas alla?",
+        "Dame un ejemplo de voy mas alla",
+        "¿Qué dice sobre otro?",
+        "¿Qué dice sobre empatia?",
+        "¿Qué dice sobre otredad?",
+        "¿Qué dice sobre reinvento?",
+        "¿Qué dice sobre evoluciono?"
+      ],
+      "palabras_clave": [
+        "voy mas alla",
+        "otro",
+        "empatia",
+        "otredad",
+        "reinvento",
+        "evoluciono"
+      ],
+      "principio": 6
+    },
+    {
+      "id": "principio_07",
+      "categoria": "Principios",
+      "titulo": "Principio 7: ME PERFECCIONO",
+      "contenido": "Principio 7\n\nME PERFECCIONO, antes y no necesariamente, a través de la tecnología y la ciencia; además, lucho por mi felicidad, realizo mi plan de vida, sin desconocer a los demás y dando lo mejor como profesional, emprendedor, innovador y transformador de mi entorno.\n\nEn palabras sencillas: Buscar mi mejora personal y profesional sin descuidar a otras personas. La tecnología y la ciencia pueden aportar a ese proceso.\n\nEjemplo didáctico: Diseñar un proyecto útil para la comunidad y evaluar a quién beneficia y cómo afecta al entorno.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 7",
+        "¿Qué significa me perfecciono?",
+        "Dame un ejemplo de me perfecciono",
+        "¿Qué dice sobre tecnologia ciencia?",
+        "¿Qué dice sobre profesional?",
+        "¿Qué dice sobre emprendedor?",
+        "¿Qué dice sobre innovador?",
+        "¿Qué dice sobre plan vida?"
+      ],
+      "palabras_clave": [
+        "me perfecciono",
+        "tecnologia ciencia",
+        "profesional",
+        "emprendedor",
+        "innovador",
+        "plan vida"
+      ],
+      "principio": 7
+    },
+    {
+      "id": "principio_08",
+      "categoria": "Principios",
+      "titulo": "Principio 8: VIVO Y CONTRIBUYO para que la comunidad esté en paz y armonía.",
+      "contenido": "Principio 8\n\nVIVO Y CONTRIBUYO para que la comunidad esté en paz y armonía.\n\nEn palabras sencillas: Asumir que mis acciones también ayudan a construir la paz y la convivencia.\n\nEjemplo didáctico: Resolver un desacuerdo mediante el diálogo y cumplir los acuerdos del grupo.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 8",
+        "¿Qué significa vivo contribuyo?",
+        "Dame un ejemplo de vivo contribuyo",
+        "¿Qué dice sobre paz?",
+        "¿Qué dice sobre armonia?",
+        "¿Qué dice sobre convivencia?",
+        "¿Qué dice sobre comunidad?"
+      ],
+      "palabras_clave": [
+        "vivo contribuyo",
+        "paz",
+        "armonia",
+        "convivencia",
+        "comunidad"
+      ],
+      "principio": 8
+    },
+    {
+      "id": "principio_09",
+      "categoria": "Principios",
+      "titulo": "Principio 9: Soy LIBRE",
+      "contenido": "Principio 9\n\nSoy LIBRE, AUTÓNOMO Y RESPONSABLE a través del diálogo y la construcción, como ideal regulativo; me dirijo, controlo y dicto mis propias leyes.\n\nEn palabras sencillas: Actuar con autonomía, dialogar y asumir las consecuencias de mis decisiones. La autorregulación no autoriza a desconocer las normas ni los derechos de otras personas.\n\nEjemplo didáctico: Elegir cómo organizar mi trabajo y responder por los compromisos que acepté.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 9",
+        "¿Qué significa libre?",
+        "Dame un ejemplo de libre",
+        "¿Qué dice sobre autonomo?",
+        "¿Qué dice sobre responsable?",
+        "¿Qué dice sobre autorregulacion?",
+        "¿Qué dice sobre libertad?",
+        "¿Qué dice sobre autonomia?",
+        "¿Qué dice sobre responsabilidad?"
+      ],
+      "palabras_clave": [
+        "libre",
+        "autonomo",
+        "responsable",
+        "autorregulacion",
+        "libertad",
+        "autonomia",
+        "responsabilidad"
+      ],
+      "principio": 9
+    },
+    {
+      "id": "principio_10",
+      "categoria": "Principios",
+      "titulo": "Principio 10: FORJO MI PERSONALIDAD",
+      "contenido": "Principio 10\n\nFORJO MI PERSONALIDAD, el carácter, la identidad, la autonomía y la responsabilidad.\n\nEn palabras sencillas: Construir mi identidad y mi forma de actuar con autonomía y responsabilidad.\n\nEjemplo didáctico: Mantener una postura respetuosa y coherente con mis valores al trabajar en equipo.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 10",
+        "¿Qué significa forjo?",
+        "Dame un ejemplo de forjo",
+        "¿Qué dice sobre personalidad?",
+        "¿Qué dice sobre caracter?",
+        "¿Qué dice sobre identidad?",
+        "¿Qué dice sobre formacion?"
+      ],
+      "palabras_clave": [
+        "forjo",
+        "personalidad",
+        "caracter",
+        "identidad",
+        "formacion"
+      ],
+      "principio": 10
+    },
+    {
+      "id": "principio_11",
+      "categoria": "Principios",
+      "titulo": "Principio 11: REALIZO actos transformadores de mejora que permiten",
+      "contenido": "Principio 11\n\nREALIZO actos transformadores de mejora que permiten, entre distintas actuaciones, escoger la que me aporte y no me haga daño, ni a la naturaleza, la sociedad, la convivencia y la vida democrática.\n\nEn palabras sencillas: Elegir acciones que produzcan una mejora sin perjudicarme ni perjudicar al entorno.\n\nEjemplo didáctico: Proponer una mejora en el campus después de revisar sus efectos sobre las personas y la naturaleza.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 11",
+        "¿Qué significa realizo?",
+        "Dame un ejemplo de realizo",
+        "¿Qué dice sobre actos transformadores?",
+        "¿Qué dice sobre mejora?",
+        "¿Qué dice sobre no dano?",
+        "¿Qué dice sobre vida democratica?",
+        "¿Qué dice sobre transformador?"
+      ],
+      "palabras_clave": [
+        "realizo",
+        "actos transformadores",
+        "mejora",
+        "no dano",
+        "vida democratica",
+        "transformador"
+      ],
+      "principio": 11
+    },
+    {
+      "id": "principio_12",
+      "categoria": "Principios",
+      "titulo": "Principio 12: EXPLORO y CULTIVO los sentimientos",
+      "contenido": "Principio 12\n\nEXPLORO y CULTIVO los sentimientos, emociones y comportamientos positivos, para promover mi felicidad.\n\nEn palabras sencillas: Reconocer y cultivar emociones y comportamientos que favorezcan mi bienestar y mi felicidad.\n\nEjemplo didáctico: Practicar la gratitud y responder con respeto durante una dificultad.\n\nLa explicación y el ejemplo son material de apoyo del proyecto.",
+      "fuente_id": "declaracion",
+      "preguntas": [
+        "Explícame el principio 12",
+        "¿Qué significa exploro?",
+        "Dame un ejemplo de exploro",
+        "¿Qué dice sobre cultivo?",
+        "¿Qué dice sobre sentimientos?",
+        "¿Qué dice sobre emociones positivas?",
+        "¿Qué dice sobre comportamientos?",
+        "¿Qué dice sobre felicidad?"
+      ],
+      "palabras_clave": [
+        "exploro",
+        "cultivo",
+        "sentimientos",
+        "emociones positivas",
+        "comportamientos",
+        "felicidad"
+      ],
+      "principio": 12
+    },
+    {
+      "id": "medit_definicion",
+      "categoria": "MEDIT",
+      "titulo": "Qué significa MEDIT",
+      "contenido": "MEDIT significa Modelo Educativo Digital Transmoderno. Es el modelo de la Universidad de Cundinamarca que orienta la formación para la vida, los valores democráticos, la civilidad y la libertad. Promueve aprender mediante experiencias y acciones que mejoran la realidad.",
+      "fuente_id": "medit",
+      "preguntas": [
+        "¿Qué es el MEDIT?",
+        "¿Qué significa MEDIT?",
+        "Explícame el MEDIT",
+        "¿Cuál es el modelo educativo de la universidad?",
+        "¿Para qué sirve el MEDIT?",
+        "¿Cuál es el objetivo del MEDIT?"
+      ],
+      "palabras_clave": [
+        "medit",
+        "modelo educativo digital transmoderno",
+        "objetivo",
+        "finalidad",
+        "proposito"
+      ]
+    },
+    {
+      "id": "medit_dimensiones",
+      "categoria": "MEDIT",
+      "titulo": "Las siete dimensiones del MEDIT",
+      "contenido": "Las siete dimensiones son: persona, aula, cultura, familia, naturaleza, institución y sociedad. Se relacionan entre sí: el aprendizaje también ocurre fuera del salón de clase.",
+      "fuente_id": "medit",
+      "preguntas": [
+        "¿Cuáles son las dimensiones del MEDIT?",
+        "¿Cuántas dimensiones tiene?",
+        "Las siete dimensiones",
+        "¿Qué son las dimensiones?",
+        "Dimensiones del MEDIT"
+      ],
+      "palabras_clave": [
+        "dimensiones",
+        "siete",
+        "7"
+      ]
+    },
+    {
+      "id": "medit_campos",
+      "categoria": "MEDIT",
+      "titulo": "Campos de aprendizaje del MEDIT",
+      "contenido": "El campo multidimensional integra tres campos: institucional, disciplinar y cultural. Los campos organizan el aprendizaje; las siete dimensiones son realidades que interactúan dentro de ese proceso.",
+      "fuente_id": "medit",
+      "preguntas": [
+        "¿Cuáles son los campos de aprendizaje?",
+        "¿Qué es un campo multidimensional de aprendizaje?",
+        "¿Qué es CMA?",
+        "Diferencia entre campos y dimensiones",
+        "¿Cuántos campos tiene el MEDIT?",
+        "¿Qué son CAI CADI CAC?"
+      ],
+      "palabras_clave": [
+        "campos",
+        "cma",
+        "cai",
+        "cadi",
+        "cac",
+        "institucional",
+        "disciplinar",
+        "cultural",
+        "multidimensional"
+      ]
+    },
+    {
+      "id": "medit_digital",
+      "categoria": "MEDIT",
+      "titulo": "Por qué el modelo es digital",
+      "contenido": "Lo digital incorpora las tecnologías a la formación y al aprendizaje. El modelo también comprende experiencias, relaciones y acciones en distintos entornos; no se limita a usar una plataforma virtual.",
+      "fuente_id": "medit",
+      "preguntas": [
+        "¿Por qué se llama digital?",
+        "¿El MEDIT es solo virtual?",
+        "¿Qué significa digital en el MEDIT?"
+      ],
+      "palabras_clave": [
+        "digital",
+        "virtual",
+        "plataforma"
+      ]
+    },
+    {
+      "id": "medit_ejes",
+      "categoria": "MEDIT",
+      "titulo": "Los cuatro ejes del MEDIT",
+      "contenido": "Los cuatro ejes son ética, aprendizaje, conocimiento y tecnología. En conjunto sostienen la formación y su relación con la transformación de la realidad.",
+      "fuente_id": "ejes",
+      "preguntas": [
+        "¿Cuáles son los ejes del MEDIT?",
+        "¿Cuántos ejes tiene?",
+        "Los cuatro pilares del MEDIT",
+        "¿Cuáles son sus ejes estructurales?"
+      ],
+      "palabras_clave": [
+        "ejes",
+        "pilares",
+        "cuatro",
+        "4",
+        "estructurales"
+      ]
+    },
+    {
+      "id": "medit_etica",
+      "categoria": "MEDIT",
+      "titulo": "La ética en el MEDIT",
+      "contenido": "La ética ayuda a examinar cómo actuamos y por qué: permite valorar nuestras costumbres y las consecuencias de nuestras decisiones. Ejemplo didáctico del proyecto: justificar una decisión considerando a quién beneficia y a quién puede perjudicar.",
+      "fuente_id": "ejes",
+      "preguntas": [
+        "¿Qué es la ética en el MEDIT?",
+        "¿Por qué es importante la ética?",
+        "Dame un ejemplo de ética"
+      ],
+      "palabras_clave": [
+        "etica",
+        "actuamos",
+        "decisiones",
+        "costumbres"
+      ]
+    },
+    {
+      "id": "medit_aprendizaje",
+      "categoria": "MEDIT",
+      "titulo": "Aprendizaje y transformación",
+      "contenido": "Aprender supone una mejora en la manera de actuar y de relacionarse con la realidad. Ejemplo didáctico del proyecto: aplicar lo aprendido para resolver un problema del entorno y revisar si la solución produjo una mejora.",
+      "fuente_id": "ejes",
+      "preguntas": [
+        "¿Cómo se entiende el aprendizaje?",
+        "¿Qué es aprender en el MEDIT?",
+        "¿Qué es un acto transformador de mejora?"
+      ],
+      "palabras_clave": [
+        "aprendizaje",
+        "aprender",
+        "transformacion",
+        "acto mejorado"
+      ]
+    },
+    {
+      "id": "medit_conocimiento_tecnologia",
+      "categoria": "MEDIT",
+      "titulo": "Conocimiento y tecnología",
+      "contenido": "El conocimiento y la tecnología acompañan la comprensión y transformación de la realidad, junto con la ética y el aprendizaje. Ejemplo didáctico del proyecto: evaluar tanto el funcionamiento de un programa como los efectos de usarlo en una comunidad.",
+      "fuente_id": "ejes",
+      "preguntas": [
+        "¿Qué papel tiene el conocimiento?",
+        "¿Para qué sirve la tecnología en el MEDIT?",
+        "Relación entre conocimiento y tecnología"
+      ],
+      "palabras_clave": [
+        "conocimiento",
+        "tecnologia",
+        "ciencia"
+      ]
+    },
+    {
+      "id": "medit_libro",
+      "categoria": "MEDIT",
+      "titulo": "Libro MEDIT y relación con la declaración",
+      "contenido": "El portal institucional del libro MEDIT reúne capítulos sobre formación para la vida, campos de aprendizaje, ciencia y tecnología, principios y valores, y la Declaración Persona Transhumana. La declaración aparece como su capítulo 5. Puedes consultar el libro en el enlace de la fuente.",
+      "fuente_id": "libro",
+      "preguntas": [
+        "¿Dónde puedo leer el libro MEDIT?",
+        "¿Dónde encuentro la declaración oficial?",
+        "¿Cómo se relacionan el MEDIT y la declaración?",
+        "Relación entre persona transhumana y MEDIT"
+      ],
+      "palabras_clave": [
+        "libro",
+        "leer",
+        "descargar",
+        "relacion",
+        "capitulo"
+      ]
+    },
+    {
+      "id": "universidad_general",
+      "categoria": "Universidad",
+      "titulo": "Qué es la Universidad de Cundinamarca",
+      "contenido": "La Universidad de Cundinamarca es una institución estatal de educación superior de carácter territorial. Es autónoma y forma parte del Sistema Universitario Estatal. Su proyecto educativo articula el conocimiento y el aprendizaje con la transformación del territorio.",
+      "fuente_id": "plan",
+      "preguntas": [
+        "¿Qué es la Universidad de Cundinamarca?",
+        "Háblame de la universidad",
+        "¿La universidad es pública o privada?",
+        "¿Qué es UCundinamarca?",
+        "¿Qué es la UDEC?"
+      ],
+      "palabras_clave": [
+        "universidad",
+        "cundinamarca",
+        "publica",
+        "privada",
+        "estatal",
+        "institucion"
+      ]
+    },
+    {
+      "id": "universidad_historia",
+      "categoria": "Universidad",
+      "titulo": "Origen de la Universidad de Cundinamarca",
+      "contenido": "Sus orígenes están en el Instituto Técnico Universitario de Cundinamarca, creado por la Ordenanza 045 del 19 de diciembre de 1969. El Ministerio de Educación Nacional la reconoció como universidad mediante la Resolución 19530 del 30 de diciembre de 1992.",
+      "fuente_id": "plan",
+      "preguntas": [
+        "¿Cuándo se fundó la universidad?",
+        "Historia de la Universidad de Cundinamarca",
+        "¿Qué era el ITUC?",
+        "¿Cuándo fue reconocida como universidad?"
+      ],
+      "palabras_clave": [
+        "historia",
+        "fundacion",
+        "fundo",
+        "origen",
+        "1969",
+        "1992",
+        "ituc"
+      ]
+    },
+    {
+      "id": "universidad_mision",
+      "categoria": "Universidad",
+      "titulo": "Misión de la Universidad (síntesis)",
+      "contenido": "Su misión la presenta como una institución pública translocal y transmoderna: una organización democrática y autónoma del conocimiento y el aprendizaje. Articula formación, ciencia, tecnología, investigación, innovación e interacción social universitaria. Esta es una síntesis.",
+      "fuente_id": "plan",
+      "preguntas": [
+        "¿Cuál es la misión de la universidad?",
+        "Misión UCundinamarca"
+      ],
+      "palabras_clave": [
+        "mision",
+        "translocal",
+        "transmoderna"
+      ]
+    },
+    {
+      "id": "universidad_vision",
+      "categoria": "Universidad",
+      "titulo": "Visión institucional a 2035 (síntesis)",
+      "contenido": "La visión a 2035 busca reconocimiento por su calidad, impacto y carácter emprendedor, y por formar personas transhumanas para la vida, la democracia, la civilidad y la libertad. Esta es una síntesis.",
+      "fuente_id": "plan",
+      "preguntas": [
+        "¿Cuál es la visión de la universidad?",
+        "Visión 2035 UCundinamarca"
+      ],
+      "palabras_clave": [
+        "vision",
+        "2035",
+        "futuro"
+      ]
+    },
+    {
+      "id": "universidad_valores",
+      "categoria": "Universidad",
+      "titulo": "Valores del MEDIT",
+      "contenido": "Entre los principios y valores figuran vida, dignidad humana, otredad, solidaridad, fraternidad, felicidad, amor, autonomía, libertad, responsabilidad, diversidad, respeto, bien común, convivencia, civilidad y naturaleza. Consulta la lista institucional en la fuente.",
+      "fuente_id": "plan",
+      "preguntas": [
+        "¿Cuáles son los valores del MEDIT?",
+        "Principios y valores de la universidad",
+        "¿Qué valores promueve UCundinamarca?"
+      ],
+      "palabras_clave": [
+        "valores",
+        "principios valores",
+        "respeto",
+        "solidaridad",
+        "fraternidad",
+        "bien comun"
+      ]
+    },
+    {
+      "id": "universidad_ubate",
+      "categoria": "Universidad",
+      "titulo": "Seccional Ubaté: dirección y contacto",
+      "contenido": "La seccional Ubaté está ubicada en la Calle 6 n.º 9–80, Ubaté, Cundinamarca. La página institucional publica direccionseccionalubate@ucundinamarca.edu.co como contacto. Sus labores comenzaron en 1973. Confirma los horarios de atención directamente con la seccional.",
+      "fuente_id": "ubate",
+      "preguntas": [
+        "¿Dónde queda la universidad en Ubaté?",
+        "Dirección de la seccional Ubaté",
+        "Contacto de Ubaté",
+        "¿Cuándo empezó la seccional Ubaté?",
+        "Háblame de Ubaté"
+      ],
+      "palabras_clave": [
+        "ubate",
+        "seccional",
+        "direccion",
+        "contacto",
+        "calle",
+        "1973"
+      ]
+    },
+    {
+      "id": "universidad_tramites",
+      "categoria": "Orientación",
+      "titulo": "Fechas, pagos y trámites",
+      "contenido": "Esta base local no contiene calendarios de inscripción, valores de matrícula ni el estado de trámites personales. No puedo confirmarlos. Consulta la convocatoria vigente y los canales institucionales; para Ubaté puedes usar el contacto de su página oficial.",
+      "fuente_id": "ubate",
+      "preguntas": [
+        "¿Cuándo son las inscripciones?",
+        "¿Cuánto cuesta la matrícula?",
+        "¿Cuáles son los horarios de atención?",
+        "¿Qué carreras hay en Ubaté?",
+        "¿Cómo hago un trámite?",
+        "¿Cuándo empieza el semestre?",
+        "¿Cuál es el calendario académico?",
+        "¿Quién es el rector actual?"
+      ],
+      "palabras_clave": [
+        "inscripciones",
+        "matricula",
+        "costos",
+        "calendario",
+        "fechas",
+        "tramites",
+        "carreras",
+        "oferta",
+        "horarios",
+        "rector actual"
+      ]
+    }
+  ]
+}

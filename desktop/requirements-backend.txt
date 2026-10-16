@@ -1,0 +1,8 @@
+# Solo para desarrollar o usar el backend LAN heredado; no es necesario
+# para ejecutar PicMe local ni el chatbot.
+fastapi==0.115.6
+uvicorn==0.34.0
+httpx==0.28.1
+mysql-connector-python==9.2.0
+PyJWT==2.10.1
+Werkzeug==3.1.3

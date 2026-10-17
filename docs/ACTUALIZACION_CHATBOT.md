@@ -1,47 +1,53 @@
 # Actualización del chatbot de escritorio
 
-Esta actualización integra las consultas de registros y las respuestas en inglés del archivo `Cris_desktop.zip`, conservando la corrección anterior de la Declaración Persona Transhumana.
+Esta actualización agrega las consultas de registros de PicMe y las respuestas en inglés, conservando las correcciones anteriores sobre la Declaración Persona Transhumana.
 
-## Aplicarla en tu PC
+## Cómo instalar la actualización
 
-1. Cierra PicMe.
+1. Cierra PicMe si está abierto.
 2. Extrae `PicMe_Chatbot_Correcciones_Integradas.zip`.
-3. Abre `Archivos_para_GitHub/desktop`. Copia su contenido dentro de la carpeta `desktop` del PicMe que ya funciona en tu PC y acepta reemplazar los archivos coincidentes. En tu instalación anterior esa carpeta era `C:\Users\yijan\Downloads\PicMe_Actividad_LLM\desktop`.
-4. Dentro de esa carpeta ejecuta `ACTUALIZAR_BD.bat`. El resultado debe indicar **33 artículos y seis fuentes**.
+3. Entra a `Archivos_para_GitHub/desktop` y copia su contenido en la carpeta `desktop` de tu instalación de PicMe. Acepta reemplazar los archivos existentes.
+4. Ejecuta `ACTUALIZAR_BD.bat`. Debe indicar que hay **33 artículos y seis fuentes**.
 5. Ejecuta `INICIAR_PICME.bat` y abre el chatbot.
 
-El paquete contiene código, conocimiento y documentación. Tu archivo `.env`, el entorno instalado y los registros de estudiantes se conservan en el PC. La actualización de conocimiento usa `chatbot.db`; las consultas sobre estudiantes usan `picme.db` en modo de solo lectura.
-
-Si necesitas ejecutarlo desde PowerShell, estando dentro de tu carpeta `desktop`:
+Si necesitas ejecutar los comandos manualmente desde PowerShell, entra primero a la carpeta `desktop`:
 
 ```powershell
 & ".\.venv\Scripts\python.exe" .\actualizar_conocimiento.py
 & ".\.venv\Scripts\python.exe" .\run.py
 ```
 
-## Preguntas para comprobarlo
+La actualización conserva el archivo `.env`, el entorno instalado y los registros de estudiantes de tu PC, siempre que no los reemplaces ni los elimines.
 
-| Pregunta | Qué debes observar |
-| --- | --- |
-| ¿Cuántas personas están registradas en PicMe? | Un conteo desde la base local y la etiqueta «Datos de PicMe · SQLite (solo lectura)». |
-| How many people are registered in PicMe? | El mismo conteo, explicado en inglés. |
-| ¿Cuál fue mi último ingreso? | Solicita iniciar sesión o consulta la cuenta de la sesión actual. |
-| Explain principle 6 | Una explicación en inglés con su fuente institucional. |
-| como se si soy una persona tras humana | Una reflexión educativa sobre la declaración, sin clasificar tu identidad. |
+## Cómo comprobar que funciona
 
-Las preguntas educativas usan Gemini cuando está configurado y disponible. Las consultas de registros se contestan localmente, incluso cuando Gemini está activado. La etiqueta SQLite en esas respuestas es el comportamiento esperado.
+Prueba estas preguntas en el chatbot:
 
-Para consultar el historial o la fecha de registro de otra persona, agrega en tu `.env` local:
+| Pregunta | Resultado esperado |
+|---|---|
+| ¿Cuántas personas están registradas en PicMe? | Muestra el total de registros de la base de datos local. |
+| How many people are registered in PicMe? | Muestra el total en inglés. |
+| ¿Cuál fue mi último ingreso? | Consulta la sesión actual o solicita iniciar sesión. |
+| Explain principle 6 | Explica el principio en inglés y muestra su fuente. |
+| como se si soy una persona tras humana | Ofrece una reflexión sobre la declaración sin definir la identidad del usuario. |
+
+Las consultas de registros se realizan directamente en SQLite y son de solo lectura. Por eso, pueden funcionar incluso cuando Gemini está activado o no está disponible. Las preguntas educativas utilizan Gemini cuando está configurado y funciona correctamente.
+
+## Permisos para consultar datos de otras personas
+
+Para autorizar una cuenta a consultar el historial o la fecha de registro de otras personas, agrega su correo a tu archivo `.env`:
 
 ```env
 PICME_CHATBOT_ADMIN_EMAILS=correo_de_tu_cuenta_registrada
 ```
 
-Después reinicia PicMe e inicia sesión con esa cuenta. Puedes autorizar varios correos separados por comas.
+Puedes incluir varios correos separados por comas. Después, reinicia PicMe e inicia sesión con una cuenta autorizada.
 
-## Actualizar GitHub
+## Actualizar el repositorio de GitHub
 
-Copia todo el contenido de `Archivos_para_GitHub` dentro de `C:\Users\yijan\Downloads\PicMe_GitHub`. Acepta reemplazar los archivos coincidentes. En PowerShell:
+1. Copia el contenido de `Archivos_para_GitHub` en tu carpeta local del repositorio.
+2. Acepta reemplazar los archivos correspondientes.
+3. Abre PowerShell y ejecuta:
 
 ```powershell
 cd "C:\Users\yijan\Downloads\PicMe_GitHub"
@@ -50,10 +56,12 @@ git commit -m "Integrar consultas de PicMe y respuestas bilingues"
 git push origin main
 ```
 
-Usa el paquete de actualización para subir el código. El ZIP original contiene también un archivo `.env`, bases locales, una clave de cifrado y el entorno `.venv`; esos archivos pertenecen a la instalación del PC.
+**Importante:** utiliza únicamente los archivos preparados para GitHub. El ZIP original de la instalación puede contener `.env`, bases de datos locales, claves de cifrado y el entorno `.venv`. No publiques esos archivos.
 
-## Alcance y verificación
+## Pruebas y limitaciones
 
-Se aprobaron 67 pruebas automáticas del escritorio. Incluyen las consultas de reflexión anteriores, los doce principios en ambos idiomas, el acceso autorizado a historial, los conteos, los rechazos de escritura en SQLite y las pruebas de persistencia. Las pruebas del LLM usan un proveedor simulado.
+La actualización pasó 67 pruebas automáticas del escritorio, relacionadas con el conocimiento, las respuestas en ambos idiomas, los permisos, las consultas de registros y la persistencia de SQLite. Las pruebas de Gemini utilizan un proveedor simulado.
 
-La cámara y la conexión real de Gemini deben comprobarse en Windows. Esta actualización es del programa de escritorio. La versión web se actualiza y despliega por separado; sus visitantes no pueden consultar la base de estudiantes que está en tu PC.
+La cámara y la conexión real con Gemini deben comprobarse en Windows.
+
+Esta actualización corresponde únicamente a la aplicación de escritorio. La versión web se actualiza y despliega por separado, y no puede consultar directamente la base de estudiantes almacenada en tu PC.

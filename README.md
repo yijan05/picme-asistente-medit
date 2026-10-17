@@ -3,9 +3,9 @@
 Universidad de Cundinamarca, seccional Ubaté  
 Ingeniería de Sistemas y Computación  
 CADI: Introducción a Machine Learning  
-Evelin Yijan Virguez Parra
+Evelin Yijan Virguez Parra y Cristian Rincón 
 
-PicMe es un proyecto de control de ingreso mediante reconocimiento facial. Para esta actividad se integró un chatbot que responde preguntas sobre la Universidad de Cundinamarca, el MEDIT y los doce principios de la Declaración Persona Transhumana.
+PicMe es un proyecto de control de ingreso mediante reconocimiento facial. El gestor de conocimiento solicito  para esta actividad integrar un chatbot al pgc, nosotros ya contabamos con un chatbot para la busqueda en la bd se le agregao información para que pueda responder preguntas sobre la Universidad de Cundinamarca, el MEDIT y los doce principios de la Declaración Persona Transhumana, en español e ingles.
 
 El chatbot se puede abrir desde PicMe o de forma independiente. También existe una versión web para consultar los contenidos educativos. Los registros de estudiantes se manejan en la aplicación de escritorio.
 

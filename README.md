@@ -84,10 +84,8 @@ Las plantillas faciales se almacenan cifradas en archivos externos. Las consulta
 ## Documentación
 
 - [Guía para actualizar el chatbot](docs/ACTUALIZACION_CHATBOT.md)
-- [Pruebas realizadas](docs/VERIFICACION.md)
-- [Guion del video en inglés](docs/VIDEO_SCRIPT_EN.md)
-- [Guía para grabar el video](docs/GUIA_GRABACION_ES.md)
-- [Estado de la rúbrica](docs/ESTADO_DE_LA_RUBRICA.md)
+- [Despliegue de Vercel] (docs/DESPLEGAR_EN_VERCEL.md)
+- [Despliegue y github] (docs/DESPLIEGUE_Y_GITHUB.md)
 
 ## Fuentes consultadas
 
@@ -99,4 +97,4 @@ Las plantillas faciales se almacenan cifradas en archivos externos. Las consulta
 
 ---
 
-*Proyecto académico desarrollado para la Universidad de Cundinamarca.*
+

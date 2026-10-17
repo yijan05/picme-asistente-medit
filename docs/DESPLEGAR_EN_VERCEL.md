@@ -29,19 +29,15 @@ Selecciona **Deploy** y espera a que termine. Si agregas o cambias las variables
 
 ## 4. Comprobar el enlace
 
-Abre la dirección que entregue Vercel y pregunta:
-
-- «Explícame el principio 6».
-- «¿Cuáles son los cuatro ejes del MEDIT?».
-- «como se si soy una persona tras humana».
+Abre la dirección que entregue Vercel y se realizan las preguntas.
 
 La etiqueta **Gemini** en una respuesta confirma que la consulta pasó por el proveedor y superó la validación de formato y referencias. El aviso **Gemini configurado** solamente indica que hay una clave guardada. Si la respuesta dice **Consulta local**, revisa el aviso de respaldo y la configuración.
 
-Comprueba también el enlace de producción en una ventana privada del navegador. El docente debe poder abrirlo y usar el chatbot. Si aparece una pantalla de acceso, revisa **Settings → Deployment Protection** antes de entregar el enlace.
+Comprueba también el enlace de producción en una ventana privada del navegador. El docente debe poder abrirlo y usar el chatbot. Si aparece una pantalla de acceso, revisa **Settings, Deployment Protection** antes de entregar el enlace.
 
 Entrega la dirección real del despliegue, el repositorio público y el video en inglés de máximo cinco minutos. En el video puedes mostrar tanto el chat web como la interfaz de PicMe en tu PC.
 
-## Qué se ajustó
+## Qué se ajusto
 
 - Las rutas del chat y del estado leen las variables del servidor sin depender del módulo de Cloudflare.
 - Vercel compila con Next.js; se conserva la configuración existente de Vinext para el otro alojamiento.

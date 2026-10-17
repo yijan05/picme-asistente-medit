@@ -19,7 +19,7 @@ El chat también funciona sin clave, en modo local. Ese modo permite consultar e
 
 ```text
 GEMINI_API_KEY=
-GEMINI_MODEL=gemini-3.8-flash
+GEMINI_MODEL=gemini-3.5-flash-lite
 PICME_CHAT_MODE=auto
 ```
 
@@ -84,7 +84,7 @@ Si un registro antiguo usa una versión distinta de scikit-learn, puede aparecer
 
 ## Verificación
 
-Se aprobaron 192 pruebas Python, incluidas 13 de RAG y del contrato HTTP de Gemini con proveedor simulado. La clave real no estuvo disponible durante la preparación. `VERIFICAR_LLM.bat` permite comprobar esa llamada en tu PC. La cámara física debe probarse allí.
+Esta actualización pasó 67 pruebas del conocimiento, RAG, respuestas bilingües, consultas de registros, permisos y SQLite. Las pruebas del proveedor usan respuestas simuladas. `VERIFICAR_LLM.bat` permite comprobar una llamada real desde tu PC. La cámara física debe probarse allí.
 
 ```powershell
 .\.venv\Scripts\python.exe pruebas_locales.py
@@ -93,3 +93,12 @@ Se aprobaron 192 pruebas Python, incluidas 13 de RAG y del contrato HTTP de Gemi
 Para las pruebas del backend MySQL opcional, instala `requirements-backend.txt` y añade `--backend`. MySQL y FastAPI no son necesarios para el programa de escritorio.
 
 La entrega completa incluye la web, reflexión en español e inglés, guion del video y guía de publicación en el README principal y `docs/`.
+
+
+## Consultas de registros e idiomas
+
+El chat de escritorio también responde en inglés. Las traducciones para la consulta local están en `conocimiento/traducciones_en.json`. Las consultas sobre registros e ingresos se resuelven con `app/chatbot/picme_queries.py`, usando SQLite de solo lectura.
+
+Puedes preguntar «¿Cuántas personas están registradas en PicMe?» o «How many people are registered in PicMe?». Para «¿Cuál fue mi último ingreso?» debes iniciar sesión. Para consultar datos de otras personas, inicia sesión con una cuenta cuyo correo figure en `PICME_CHATBOT_ADMIN_EMAILS`, en el archivo `.env` local. Se permiten varios correos separados por comas.
+
+Los resultados de las consultas de registros no se envían a Gemini. El módulo no crea, modifica ni elimina cuentas, y no consulta hashes de contraseñas ni plantillas faciales.

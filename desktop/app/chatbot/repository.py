@@ -11,6 +11,7 @@ from .. import config
 HERE = Path(__file__).resolve().parent
 SEED_PATH = config.BASE_DIR / "conocimiento" / "base_conocimiento.json"
 DEFAULT_DB_PATH = config.DATA_DIR / "chatbot.db"
+TRANSLATIONS_PATH = config.BASE_DIR / "conocimiento" / "traducciones_en.json"
 
 
 def read_seed(path: Path) -> tuple[dict, str]:
@@ -122,7 +123,13 @@ class KnowledgeRepository:
             questions: dict[str, list[str]] = {}
             for row in connection.execute("SELECT articulo_id, texto FROM pregunta_ejemplo"):
                 questions.setdefault(row[0], []).append(row[1])
-            return [dict(row, preguntas=questions.get(row["id"], [])) for row in rows]
+            translations = {}
+            try:
+                translations = json.loads(TRANSLATIONS_PATH.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                translations = {}
+            return [dict(row, preguntas=questions.get(row["id"], []),
+                         contenido_en=translations.get(row["id"], row["contenido"])) for row in rows]
         finally:
             connection.close()
 

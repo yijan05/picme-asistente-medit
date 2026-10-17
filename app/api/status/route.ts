@@ -1,9 +1,11 @@
-import { env } from 'cloudflare:workers';
+import knowledge from '@/lib/knowledge.json';
+
+export const dynamic = 'force-dynamic';
 
 export function GET() {
-  const configured = Boolean(env.GEMINI_API_KEY || process.env.GEMINI_API_KEY);
+  const configured = Boolean(process.env.GEMINI_API_KEY);
   return Response.json({ configured, provider: 'Gemini',
-    model: env.GEMINI_MODEL || process.env.GEMINI_MODEL || 'gemini-3.8-flash',
-    knowledgeArticles: 32, sources: 6,
+    model: process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite',
+    knowledgeArticles: knowledge.articulos.length, sources: knowledge.fuentes.length,
   }, { headers: { 'Cache-Control': 'no-store' } });
 }

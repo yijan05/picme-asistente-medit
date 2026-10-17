@@ -10,7 +10,7 @@ import urllib.request
 
 from .. import config
 
-DEFAULT_MODEL = "gemini-3.8-flash"
+DEFAULT_MODEL = "gemini-3.5-flash-lite"
 PROMPT_PATH = config.BASE_DIR / "conocimiento" / "system_prompt.txt"
 
 
@@ -23,7 +23,7 @@ def load_environment(path: Path | None = None) -> None:
     path = path or config.BASE_DIR / ".env"
     if not path.exists():
         return
-    allowed = {"GEMINI_API_KEY", "GEMINI_MODEL", "PICME_CHAT_MODE"}
+    allowed = {"GEMINI_API_KEY", "GEMINI_MODEL", "PICME_CHAT_MODE", "PICME_CHATBOT_ADMIN_EMAILS"}
     for line in path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:

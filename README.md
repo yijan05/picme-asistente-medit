@@ -3,9 +3,9 @@
 Universidad de Cundinamarca, seccional Ubaté  
 Ingeniería de Sistemas y Computación  
 CADI: Introducción a Machine Learning  
-Evelin Yijan Virguez Parra y Cristian Rincón 
+Evelin Yijan Virguez Parra
 
-PicMe es un proyecto de control de ingreso mediante reconocimiento facial. El gestor de conocimiento solicito  para esta actividad integrar un chatbot al pgc, nosotros ya contabamos con un chatbot para la busqueda en la bd se le agregao información para que pueda responder preguntas sobre la Universidad de Cundinamarca, el MEDIT y los doce principios de la Declaración Persona Transhumana, en español e ingles.
+PicMe es un proyecto de control de ingreso mediante reconocimiento facial. Para esta actividad se integró un chatbot que responde preguntas sobre la Universidad de Cundinamarca, el MEDIT y los doce principios de la Declaración Persona Transhumana.
 
 El chatbot se puede abrir desde PicMe o de forma independiente. También existe una versión web para consultar los contenidos educativos. Los registros de estudiantes se manejan en la aplicación de escritorio.
 
@@ -18,6 +18,7 @@ Repositorio: https://github.com/yijan05/picme-asistente-medit
 - Usa Gemini para redactar la respuesta a partir de los documentos recuperados.
 - Muestra la fuente de la información y señala si respondió Gemini o la consulta local.
 - Conserva un historial breve para entender preguntas de seguimiento.
+- En el escritorio responde en español o inglés y consulta estadísticas de registros e ingresos mediante SQLite, con consultas de solo lectura.
 
 Por ejemplo, se puede preguntar «Explícame el principio 6», «¿Cuáles son los ejes del MEDIT?» o «¿Cómo sé si soy una persona transhumana?». En esta última pregunta propone una reflexión sobre las acciones cotidianas, sin decidir la identidad de quien consulta.
 
@@ -52,6 +53,8 @@ El archivo `.env` se conserva en el equipo y queda excluido de Git. Sin clave, e
 | `desktop/app/chatbot/engine.py` | Busca el contenido relacionado con la pregunta y reconoce variantes de escritura. |
 | `desktop/app/chatbot/rag.py` | Selecciona los documentos y prepara el contexto de la conversación. |
 | `desktop/app/chatbot/llm.py` | Envía la solicitud a Gemini y revisa el formato de la respuesta. |
+| `desktop/app/chatbot/picme_queries.py` | Consulta estadísticas e historial autorizado de PicMe en SQLite. |
+| `desktop/conocimiento/traducciones_en.json` | Contiene las traducciones de los 33 artículos para la consulta local en inglés. |
 | `desktop/conocimiento/base_conocimiento.json` | Contiene los artículos y sus fuentes. |
 | `desktop/conocimiento/system_prompt.txt` | Define el propósito, las reglas y los ejemplos del asistente. |
 | `desktop/app/db.py` | Maneja usuarios, plantillas e ingresos en SQLite. |
@@ -71,18 +74,20 @@ El system prompt limita las respuestas al tema del proyecto, separa los document
 
 Ambas bases se crean al iniciar la aplicación si aún no existen. El código publicado comienza sin estudiantes registrados. Las plantillas faciales se guardan cifradas en archivos externos; la base conserva sus rutas.
 
-Para actualizar el conocimiento, se edita el JSON y se ejecuta `ACTUALIZAR_BD.bat`. El chatbot educativo no consulta los registros biométricos ni realiza operaciones sobre los estudiantes mediante Gemini.
+Para actualizar el conocimiento, se edita el JSON y se ejecuta `ACTUALIZAR_BD.bat`. Las preguntas sobre estadísticas de registros e ingresos se atienden en el escritorio con consultas SQLite de solo lectura. La fecha de registro y el último ingreso propios requieren iniciar sesión; los datos de otras personas requieren una cuenta autorizada mediante `PICME_CHATBOT_ADMIN_EMAILS`. Los resultados de estas consultas no se incorporan al historial enviado a Gemini. El chat no crea, modifica ni elimina estudiantes.
+
+Consulta la [guía de esta actualización](docs/ACTUALIZACION_CHATBOT.md) para aplicar los cambios y probarlos.
 
 ## Versión web y entrega
 
-La web utiliza React, TypeScript y Vinext y está preparada para Cloudflare Workers. Para ejecutarla en desarrollo se necesita Node.js 22.13 o posterior:
+La web utiliza React y TypeScript. Incluye configuración para Vercel con Next.js y para Cloudflare Workers con Vinext. Para ejecutarla en desarrollo se necesita Node.js 22.13 o posterior:
 
 ```bash
 npx pnpm install --frozen-lockfile
 npx pnpm dev
 ```
 
-Las variables `GEMINI_API_KEY` y `GEMINI_MODEL` también deben configurarse en el servidor del alojamiento. El archivo `.env` del PC no configura ese servidor.
+Para publicarla en Vercel, sigue la [guía de despliegue](docs/DESPLEGAR_EN_VERCEL.md). Las variables `GEMINI_API_KEY` y `GEMINI_MODEL` se configuran en el panel del alojamiento. El archivo `.env` del PC no configura ese servidor.
 
 El repositorio público y la conexión de Gemini en Windows ya funcionan. Para terminar la entrega falta habilitar el acceso al sitio para su evaluación, configurar y comprobar Gemini en la web y grabar el video en inglés de máximo cinco minutos.
 
@@ -125,7 +130,7 @@ Educational transformation depends on whether the tool helps people understand a
 
 En Windows se comprobó una respuesta real con HTTP 200 y el modelo `gemini-3.5-flash-lite`. Después se probaron preguntas sobre la declaración en la interfaz de PicMe.
 
-La corrección de las consultas de reflexión pasó 43 pruebas del buscador y del RAG en Python y 13 pruebas web. Las pruebas automáticas del proveedor usan respuestas simuladas. La evaluación de la cámara y de la precisión del reconocimiento facial requiere pruebas con personas y con el dispositivo real.
+La actualización del escritorio pasó 67 pruebas sobre conocimiento, RAG, respuestas bilingües, consultas de registros, permisos y persistencia SQLite. Las 13 pruebas web se habían completado en la versión anterior. Las pruebas automáticas del proveedor usan respuestas simuladas; esta actualización del escritorio no modifica la web. La evaluación de la cámara y de la precisión del reconocimiento facial requiere pruebas con personas y con el dispositivo real.
 
 ## Fuentes principales
 
@@ -138,3 +143,4 @@ La corrección de las consultas de reflexión pasó 43 pruebas del buscador y de
 - [Documentación de Gemini](https://ai.google.dev/gemini-api/docs).
 
 PicMe es un proyecto académico. Para trámites e información institucional vigente se deben consultar los canales oficiales de la Universidad.
+

@@ -10,6 +10,7 @@ import threading
 
 from ... import auth
 from ...chatbot.rag import RagAssistant
+from ...chatbot.engine import question_is_english
 from .. import theme
 
 
@@ -26,14 +27,14 @@ class ChatbotView(tk.Frame):
 
         header = tk.Frame(self, bg=theme.COLOR_BG)
         header.pack(fill="x", padx=24, pady=(20, 8))
-        ttk.Label(header, text="Asistente UCundinamarca", style="Heading.TLabel").pack(side="left")
+        ttk.Label(header, text="Asistente PicMe", style="Heading.TLabel").pack(side="left")
         self.new_button = ttk.Button(header, text="Nueva conversación", style="Secondary.TButton",
                                      command=self._clear)
         self.new_button.pack(side="right")
         if not getattr(app, "chatbot_only", False):
             ttk.Button(header, text="Volver", style="Secondary.TButton",
                        command=self._back).pack(side="right", padx=8)
-        ttk.Label(self, text="MEDIT · Declaración Persona Transhumana · Seccional Ubaté",
+        ttk.Label(self, text="PicMe · Registros e ingresos · MEDIT · Declaration of the Transhuman Person",
                   style="Subheading.TLabel").pack(anchor="w", padx=24)
         mode = ("Gemini activado: se envían la pregunta y fragmentos de conocimiento al proveedor."
                 if self.bot.mode == "gemini" else "Consulta local. Para usar el LLM, configura GEMINI_API_KEY en .env.")
@@ -52,9 +53,9 @@ class ChatbotView(tk.Frame):
         quick = tk.Frame(self, bg=theme.COLOR_BG)
         quick.pack(fill="x", padx=24, pady=(10, 8))
         for label, question in [
+            ("Registros PicMe", "¿Cuántas personas están registradas en PicMe?"),
             ("¿Qué es MEDIT?", "¿Qué es el MEDIT?"),
-            ("Los 12 principios", "Muéstrame los 12 principios"),
-            ("Ejemplo: principio 6", "Explícame el principio 6"),
+            ("Explain principle 6", "Explain principle 6"),
         ]:
             ttk.Button(quick, text=label, style="Secondary.TButton",
                        command=lambda q=question: self.send(q)).pack(side="left", padx=(0, 8))
@@ -78,8 +79,7 @@ class ChatbotView(tk.Frame):
         self.transcript.see("end")
 
     def _welcome(self) -> None:
-        self._append("PicMe", "Hola. Puedo explicarte el MEDIT y los doce principios de la declaración. "
-                     "Prueba: «¿Qué significa me valoro y cuido?» o «Explícame el principio 9».")
+        self._append("PicMe", "Hola. Puedo consultar estadísticas de registros e ingresos de PicMe y explicar el MEDIT y la declaración. También puedes preguntarme en inglés.\n\nHi! I can answer questions about PicMe registrations and entry events, and explain MEDIT and the declaration. You can ask in English, too.\n\nPrueba: «¿Cuántas personas están registradas en PicMe?» / “How many people are registered in PicMe?”")
 
     def _enter(self, event=None) -> str:
         self.send()
@@ -95,14 +95,15 @@ class ChatbotView(tk.Frame):
             self._append("PicMe", "Usa una pregunta de hasta 2000 caracteres.")
             return
         self.question_var.set("")
-        self._append("Tú", question)
+        english = question_is_english(question)
+        self._append("You" if english else "Tú", question)
         if self.bot.mode == "local":
             self._display_answer(self.bot.ask(question))
             return
         self._busy = True
         self.send_button.configure(state="disabled")
         self.new_button.configure(state="disabled")
-        self.mode_var.set("Consultando el conocimiento y Gemini…")
+        self.mode_var.set("Consulting knowledge and Gemini…" if english else "Consultando el conocimiento y Gemini…")
         def work():
             try:
                 self._results.put(self.bot.ask(question))
@@ -131,6 +132,8 @@ class ChatbotView(tk.Frame):
 
     def _display_answer(self, answer) -> None:
         label = f"Gemini · {answer.modelo}" if answer.llm_usado else "Consulta local"
+        if answer.modo == "picme_datos":
+            label = "Datos de PicMe · SQLite (solo lectura)"
         if answer.modo == "local_respaldo":
             label = "Consulta local · respaldo de la API"
         self.mode_var.set(label)

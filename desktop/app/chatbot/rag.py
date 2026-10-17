@@ -4,8 +4,10 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from .engine import Chatbot, Respuesta, ORDINALS, normalize, tokens
+from .engine import Chatbot, Respuesta, ORDINALS, normalize, tokens, question_is_english
 from .llm import DEFAULT_MODEL, GeminiClient, LLMError, load_environment
+from .picme_queries import PicMeDataAssistant
+from .. import auth
 
 
 class RagAssistant:
@@ -15,6 +17,7 @@ class RagAssistant:
                  *, provider=None, mode: str | None = None):
         load_environment()
         self.local = Chatbot(db_path, seed_path)
+        self.picme_data = PicMeDataAssistant()
         self.repository = self.local.repository
         self.documents = self.local.documents
         self.history: list[dict] = []
@@ -43,8 +46,6 @@ class RagAssistant:
         if direct.articulo_id:
             selected.append(direct.articulo_id)
         if direct.articulo_id == "declaracion_reflexion":
-            # Las preguntas personales necesitan los compromisos completos,
-            # no una coincidencia genérica con el título de un libro del MEDIT.
             selected.append("declaracion_completa")
             return [self.local.by_id[id] for id in selected if id in self.local.by_id]
         if normalized in {"un ejemplo", "dame un ejemplo", "mas sencillo", "explicalo", "compare them", "an example"}:
@@ -63,6 +64,12 @@ class RagAssistant:
         return [self.local.by_id[id] for id in selected if id in self.local.by_id]
 
     def ask(self, question: str) -> Respuesta:
+        # Las consultas operativas se resuelven localmente con SELECT de solo lectura.
+        # Nunca se envían usuarios ni eventos de acceso a Gemini.
+        if isinstance(question, str) and question.strip() and len(question) <= self.MAX_QUESTION_LENGTH:
+            operational = self.picme_data.ask(question, user=auth.current_user())
+            if operational is not None:
+                return Respuesta(operational, True, modo="picme_datos")
         direct = self.local.ask(question)
         if self.mode != "gemini" or not isinstance(question, str) or not question.strip() or len(question) > self.MAX_QUESTION_LENGTH:
             return direct
@@ -72,7 +79,10 @@ class RagAssistant:
         try:
             answer, ids = self.provider.generate(question, documents, self.history)
         except LLMError as exc:
-            direct.texto = f"{exc} Te muestro la consulta local disponible:\n\n{direct.texto}"
+            if question_is_english(question):
+                direct.texto = f"Gemini is temporarily unavailable: {exc} Here is the local result available:\n\n{direct.texto}"
+            else:
+                direct.texto = f"{exc} Te muestro la consulta local disponible:\n\n{direct.texto}"
             direct.modo = "local_respaldo"
             return direct
         by_id = {d["id"]: d for d in documents}
